@@ -1,18 +1,882 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activities.MainActivity">
+    android:id="@+id/mainLayout"
+    style="@android:style/Widget.DeviceDefault.HorizontalScrollView"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_1"
+    android:screenOrientation="landscape"
+    android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+
+        android:id="@+id/layoutBar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:orientation="horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/btnmusic"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/music_on" />
+
+                <ImageView
+                    android:id="@+id/btn_privacy"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/privacy_policy" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <ImageView
+                    android:id="@+id/drawingId"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/writealphabets2" />
+
+                <ImageView
+                    android:id="@+id/drawingNumberId"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/writenumbericon" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:gravity="end">
+
+                <ImageView
+                    android:id="@+id/btn_share"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/share" />
+
+                <ImageView
+                    android:id="@+id/btn_rate"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/rate_us" />
+
+                <ImageView
+                    android:id="@+id/btn_exit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="2dp"
+                    android:src="@drawable/exit_btn" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layoutButtom"
+        android:layout_below="@+id/layoutBar"
+        android:foregroundGravity="center"
+        android:gravity="center">
+
+        <HorizontalScrollView
+
+
+            style="@android:style/Widget.ScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fillViewport="true"
+            android:isScrollContainer="true"
+            android:keepScreenOn="true"
+            android:scrollbarStyle="insideInset">
+
+            <LinearLayout
+                android:id="@+id/linearMainLayoutId"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_margin="5dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="4.0">
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="2.0">
+
+                    <LinearLayout
+                        android:layout_width="190dp"
+                        android:layout_height="210dp"
+                        android:background="@drawable/card1"
+                        android:orientation="vertical">
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            app:cardBackgroundColor="@color/whiteLight"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="0dp">
+
+
+                            <LinearLayout
+                                android:layout_width="180dp"
+                                android:layout_height="150dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+
+                                <ImageView
+
+                                    android:id="@+id/icon1Id"
+                                    android:layout_width="150dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/abc" />
+
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/bd_cartoon_shot"
+                            android:gravity="center"
+                            android:text="Alphabets"
+                            android:textColor="@color/Text2"
+                            android:textSize="20sp" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="190dp"
+                        android:layout_height="210dp"
+                        android:background="@drawable/card2"
+                        android:orientation="vertical">
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            app:cardBackgroundColor="@color/whiteLight"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="0dp">
+
+
+                            <LinearLayout
+                                android:layout_width="180dp"
+                                android:layout_height="150dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+
+                                <ImageView
+
+                                    android:id="@+id/icon2Id"
+                                    android:layout_width="150dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/numbers" />
+
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/bd_cartoon_shot"
+                            android:gravity="center"
+                            android:text="Numbers"
+                            android:textColor="@color/Text2"
+                            android:textSize="20sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="190dp"
+                        android:layout_height="210dp"
+                        android:background="@drawable/card3"
+                        android:orientation="vertical">
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            app:cardBackgroundColor="@color/whiteLight"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="0dp">
+
+
+                            <LinearLayout
+                                android:layout_width="180dp"
+                                android:layout_height="150dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+
+                                <ImageView
+
+                                    android:id="@+id/icon5Id"
+                                    android:layout_width="150dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/days" />
+
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/bd_cartoon_shot"
+                            android:gravity="center"
+                            android:text="Days"
+                            android:textColor="@color/Text2"
+                            android:textSize="20sp" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="2.0">
+
+
+                    <LinearLayout
+                        android:layout_width="190dp"
+                        android:layout_height="210dp"
+                        android:background="@drawable/card4"
+                        android:orientation="vertical">
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            app:cardBackgroundColor="@color/whiteLight"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="0dp">
+
+
+                            <LinearLayout
+                                android:layout_width="180dp"
+                                android:layout_height="150dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+
+                                <ImageView
+
+                                    android:id="@+id/icon6Id"
+                                    android:layout_width="150dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/months" />
+
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/bd_cartoon_shot"
+                            android:gravity="center"
+                            android:text="Months"
+                            android:textColor="@color/Text2"
+                            android:textSize="20sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="190dp"
+                        android:layout_height="210dp"
+                        android:background="@drawable/card5"
+                        android:orientation="vertical">
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            app:cardBackgroundColor="@color/whiteLight"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="0dp">
+
+
+                            <LinearLayout
+                                android:layout_width="180dp"
+                                android:layout_height="150dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+
+                                <ImageView
+
+                                    android:id="@+id/icon3Id"
+                                    android:layout_width="150dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/fruits2" />
+
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/bd_cartoon_shot"
+                            android:gravity="center"
+                            android:text="Fruits"
+                            android:textColor="@color/Text2"
+                            android:textSize="20sp" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="190dp"
+                        android:layout_height="210dp"
+                        android:background="@drawable/card6"
+                        android:orientation="vertical">
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            app:cardBackgroundColor="@color/whiteLight"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="0dp">
+
+
+                            <LinearLayout
+                                android:layout_width="180dp"
+                                android:layout_height="150dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+
+                                <ImageView
+
+                                    android:id="@+id/icon4Id"
+                                    android:layout_width="150dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/animals3" />
+
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/bd_cartoon_shot"
+                            android:gravity="center"
+                            android:text="Animals"
+                            android:textColor="@color/Text2"
+                            android:textSize="20sp" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:id="@+id/linearLayoutId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="2.0">
+
+
+                    <LinearLayout
+                        android:layout_width="190dp"
+                        android:layout_height="210dp"
+                        android:background="@drawable/card1"
+                        android:orientation="vertical">
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            app:cardBackgroundColor="@color/whiteLight"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="0dp">
+
+
+                            <LinearLayout
+                                android:layout_width="180dp"
+                                android:layout_height="150dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+
+                                <ImageView
+
+                                    android:id="@+id/ColorsActivitybtn"
+                                    android:layout_width="150dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/colors" />
+
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/bd_cartoon_shot"
+                            android:gravity="center"
+                            android:text="Colors"
+                            android:textColor="@color/Text2"
+                            android:textSize="20sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="190dp"
+                        android:layout_height="210dp"
+                        android:background="@drawable/card4"
+                        android:orientation="vertical">
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            app:cardBackgroundColor="@color/whiteLight"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="0dp">
+
+
+                            <LinearLayout
+                                android:layout_width="180dp"
+                                android:layout_height="150dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+
+                                <ImageView
+
+                                    android:id="@+id/BodyPartsActivitybtn"
+                                    android:layout_width="150dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/bodyparts_icon" />
+
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/bd_cartoon_shot"
+                            android:gravity="center"
+                            android:text="Body Parts"
+                            android:textColor="@color/Text2"
+                            android:textSize="20sp" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:id="@+id/linearLayoutIdProfessions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="2.0">
+
+
+                    <LinearLayout
+                        android:layout_width="190dp"
+                        android:layout_height="210dp"
+                        android:background="@drawable/card5"
+                        android:orientation="vertical">
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            app:cardBackgroundColor="@color/whiteLight"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="0dp">
+
+
+                            <LinearLayout
+                                android:layout_width="180dp"
+                                android:layout_height="150dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+
+                                <ImageView
+
+                                    android:id="@+id/ProfessionsActivitybtn"
+                                    android:layout_width="150dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/professions_icon" />
+
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/bd_cartoon_shot"
+                            android:gravity="center"
+                            android:text="Professions"
+                            android:textColor="@color/Text2"
+                            android:textSize="20sp" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:id="@+id/linearLayoutIdShapes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="2.0">
+
+
+                    <LinearLayout
+                        android:layout_width="190dp"
+                        android:layout_height="210dp"
+                        android:background="@drawable/card3"
+                        android:orientation="vertical">
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            app:cardBackgroundColor="@color/whiteLight"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="0dp">
+
+
+                            <LinearLayout
+                                android:layout_width="180dp"
+                                android:layout_height="150dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+
+                                <ImageView
+
+                                    android:id="@+id/ShapesActivitybtn"
+                                    android:layout_width="150dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/shapes_icon" />
+
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/bd_cartoon_shot"
+                            android:gravity="center"
+                            android:text="Shapes"
+                            android:textColor="@color/Text2"
+                            android:textSize="20sp" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:id="@+id/linearLayoutIdVehicles"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="2.0">
+
+
+                    <LinearLayout
+                        android:layout_width="190dp"
+                        android:layout_height="210dp"
+                        android:background="@drawable/card2"
+                        android:orientation="vertical">
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            app:cardBackgroundColor="@color/whiteLight"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="0dp">
+
+
+                            <LinearLayout
+                                android:layout_width="180dp"
+                                android:layout_height="150dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+
+                                <ImageView
+
+                                    android:id="@+id/VehiclesActivitybtn"
+                                    android:layout_width="150dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/vehicles_icon" />
+
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/bd_cartoon_shot"
+                            android:gravity="center"
+                            android:text="Vehicles"
+                            android:textColor="@color/Text2"
+                            android:textSize="20sp" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layoutButtom"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/navButtom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/Quizbtn"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:src="@drawable/quiz_icon" />
+
+            <ImageView
+                android:id="@+id/drawbtn"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:src="@drawable/draw1" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

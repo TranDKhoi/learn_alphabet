@@ -1,3 +1,52 @@
 <resources>
-    <string name="app_name">learn_alphabet</string>
+    <string name="app_name">Kids English Basics</string>
+    <string name="app_desc">Let your kids learn english basics while playing and having fun</string>
+
+    <string name="ADS_VISIBILITY">YES</string>
+
+
+    <string name="AdmobBannerAdsID">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="admob_interstitial_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob_app_id">ca-app-pub-3940256099942544~4673721183</string>
+
+
+    <string name="privacy">https://www.google.com/</string>
+
+    <string name="myCreation">My Creation</string>
+    <string name="start">Start</string>
+    <string name="close">Close</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="yes">Yes</string>
+    <string name="color">color</string>
+    <string name="msg_save_picture">STORAGE ACCESS DENIED\n\nSorry! You will not be able to save your kids\' precious paintings on this device.\n\nClick TRY AGAIN to AllOW </string>
+
+
+    <!-- Draw Board -->
+
+    <string name="start_new">New</string>
+    <string name="brush">Brush</string>
+    <string name="erase">Erase</string>
+    <string name="save">Save</string>
+    <string name="paint">Paint</string>
+    <string name="sml">Small</string>
+    <string name="med">Medium</string>
+    <string name="lrg">Large</string>
+    <string name="brush_size">Brush size:</string>
+    <string name="easer_size">Eraser size:</string>
+    <string name="new_drawing">New drawing</string>
+    <string name="start_new_drawing">Start new drawing (you will lose the current drawing)?</string>
+    <string name="save_drawing">Save drawing</string>
+    <string name="drawing_to_gallery">Save drawing to device Gallery?</string>
+    <string name="saved_to_gallery">Drawing saved to Gallery!</string>
+    <string name="ops_image">Oops! Image could not be saved.</string>
+
+    <string name="share_text">Install This App from:</string>
+    <string name="send_to">Send To: </string>
+
+
+    <string name="small_text">Small</string>
+    <string name="default_text">Normal</string>
+    <string name="large_text">Large</string>
+
 </resources>
