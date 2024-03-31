@@ -3,32 +3,31 @@ package com.learn_alphabet.activities.quiz.utils;
 public class QuestionSet {
 
 	String question;
-	int id;//should be unique
+	int id;
 	int ansImage;
 	int audio;
 
-
-
-	public QuestionSet(int _ansImage, String _question, int _id, int audio) {
-		this.question=_question;
-		this.id=_id;
-		this.ansImage=_ansImage;
+	public QuestionSet(int ansImage, String question, int id, int audio) {
+		this.question = question;
+		this.id = id;
+		this.ansImage = ansImage;
 		this.audio = audio;
-
-
 	}
+
 	public String getQuestion() {
 		return question;
 	}
 	public void setQuestion(String question) {
 		this.question = question;
 	}
+
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public int getAnsImage() {
 		return ansImage;
 	}
@@ -39,8 +38,8 @@ public class QuestionSet {
 	public int getAudio() {
 		return audio;
 	}
-
 	public void setAudio(int audio) {
 		this.audio = audio;
 	}
+
 }
