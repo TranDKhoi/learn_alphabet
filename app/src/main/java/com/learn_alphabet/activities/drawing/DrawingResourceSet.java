@@ -10,11 +10,11 @@ public class DrawingResourceSet {
     public static String ICON4 = "icon4";
     public static String ICON5 = "icon5";
     public static String ICON6 = "icon6";
-    public static String COLORS = "colors";
-    public static String BODY = "body";
-    public static String PROFESSIONS = "professions";
-    public static String SHAPES = "shapes";
-    public static String VEHICLES = "vehicles";
+    public static String ICON7 = "icon7";
+    public static String ICON8 = "icon8";
+    public static String ICON9 = "icon9";
+    public static String ICON10 = "icon10";
+    public static String ICON11 = "icon11";
 
 
     public static String DRAWING_ALPHABET = "alphabet";

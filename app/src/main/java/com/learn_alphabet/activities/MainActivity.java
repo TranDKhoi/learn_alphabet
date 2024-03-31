@@ -21,8 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.learn_alphabet.R;
-import com.learn_alphabet.activities.drawing.DrawingResourceSet;
-import com.learn_alphabet.activities.learn_speak.AlphaActivity;
+import com.learn_alphabet.activities.learn_speak.LearnActivity;
+import com.learn_alphabet.activities.learn_speak.LearnResourceSet;
 import com.learn_alphabet.activities.quiz.utils.QuizQuestionHandler;
 import com.learn_alphabet.databinding.ActivityMainBinding;
 import com.learn_alphabet.utils.SharedPreference;
@@ -163,15 +163,15 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 // adShow();
             } else {
                 if (id == R.id.icon1Id) {
-                    Intent icon1Id = new Intent(MainActivity.this, AlphaActivity.class);
-                    icon1Id.putExtra("type", DrawingResourceSet.ICON1);
+                    Intent icon1Id = new Intent(MainActivity.this, LearnActivity.class);
+                    icon1Id.putExtra("type", LearnResourceSet.ICON1);
                     startActivity(icon1Id);
                     playerr.pause();
                 } else if (id == R.id.icon2Id) {
-                    // Intent icon2Id = new Intent(MainActivity.this, NumActivity.class);
-                    // icon2Id.putExtra("type", DrawingResourcePool.ICON2);
-                    // startActivity(icon2Id);
-                    // playerr.pause();
+                    Intent icon2Id = new Intent(MainActivity.this, LearnActivity.class);
+                    icon2Id.putExtra("type", LearnResourceSet.ICON2);
+                    startActivity(icon2Id);
+                    playerr.pause();
                 } else if (id == R.id.icon3Id) {
                     // Intent icon3Id = new Intent(MainActivity.this, FruitsActivity.class);
                     // icon3Id.putExtra("type", DrawingResourcePool.ICON3);

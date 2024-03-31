@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.learn_speak.AlphaActivity"
+            android:name=".activities.learn_speak.LearnActivity"
             android:screenOrientation="landscape" />
     </application>
 
