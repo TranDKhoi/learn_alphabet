@@ -21,47 +21,35 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.learn_alphabet.R;
+import com.learn_alphabet.activities.drawing.DrawingResourceSet;
+import com.learn_alphabet.activities.learn_speak.AlphaActivity;
 import com.learn_alphabet.activities.quiz.utils.QuizQuestionHandler;
+import com.learn_alphabet.databinding.ActivityMainBinding;
 import com.learn_alphabet.utils.SharedPreference;
 
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
     private static final String TAG = "MainActivity";
     private AudioManager audio;
-    ImageView btnmusic = null;
-    ImageView btn_privacy = null;
-    ImageView btn_share = null;
-    ImageView btn_rate = null;
-    ImageView btn_exit = null;
-    //  ImageView colorgbtn = null;
     ImageView drawbtn = null;
     ImageView Quizbtn = null;
     public static SharedPreference sharedPreference;
-    ImageView drawingBtn = null;
-    ImageView drawingNumberBtn = null;
-    ImageView icon1Btn = null;
-    ImageView icon2Btn = null;
-    ImageView icon3Btn = null;
-    ImageView icon4Btn = null;
-    ImageView icon5Btn = null;
-    ImageView icon6Btn = null;
-    ImageView ColorsActivitybtn = null;
-    ImageView BodyPartsActivitybtn = null;
-    ImageView ProfessionsActivitybtn = null;
-    ImageView VehiclesActivitybtn = null;
-    ImageView ShapesActivitybtn = null;
     private long mLastClickTime = 0;
     MediaPlayer playerr;
     public Dialog myDialog;
     private String musicStatus;
+    ActivityMainBinding root;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        root = ActivityMainBinding.inflate(getLayoutInflater());
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        requestWindowFeature(1);
+        setContentView(root.getRoot());
+
+
         this.audio = (AudioManager) getSystemService(AUDIO_SERVICE);
-
-
         // init dialog
         myDialog = new Dialog(this);
 
@@ -69,112 +57,76 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         this.playerr.start();
         this.playerr.setLooping(true);
 
-        requestWindowFeature(1);
-        setContentView(R.layout.activity_main);
 
         QuizQuestionHandler.populateList();
 
-        this.btnmusic = (ImageView) findViewById(R.id.btnmusic);
-        this.btn_privacy = (ImageView) findViewById(R.id.btn_privacy);
-        this.btn_share = (ImageView) findViewById(R.id.btn_share);
-        this.btn_rate = (ImageView) findViewById(R.id.btn_rate);
-        this.btn_exit = (ImageView) findViewById(R.id.btn_exit);
-        this.drawbtn = (ImageView) findViewById(R.id.drawbtn);
-        this.Quizbtn = (ImageView) findViewById(R.id.Quizbtn);
+        root.btnmusic.setOnClickListener(this);
+        root.btnPrivacy.setOnClickListener(this);
+        root.btnShare.setOnClickListener(this);
+        root.btnRate.setOnClickListener(this);
+        root.btnExit.setOnClickListener(this);
 
-        // Set OnclickListner for main buttons
+        root.drawBtn.setOnClickListener(this);
+        root.quizBtn.setOnClickListener(this);
+        root.drawTextBtn.setOnClickListener(this);
+        root.drawNumberBtn.setOnClickListener(this);
 
-        this.btnmusic.setOnClickListener(this);
-        this.btn_privacy.setOnClickListener(this);
-        this.btn_share.setOnClickListener(this);
-        this.btn_rate.setOnClickListener(this);
-        this.btn_exit.setOnClickListener(this);
-        // this.colorgbtn.setOnClickListener(this);
-        this.drawbtn.setOnClickListener(this);
-        this.Quizbtn.setOnClickListener(this);
-
-        // Init Game Categories Buttons
-
-        this.icon1Btn = (ImageView) findViewById(R.id.icon1Id);
-        this.icon2Btn = (ImageView) findViewById(R.id.icon2Id);
-        this.icon3Btn = (ImageView) findViewById(R.id.icon3Id);
-        this.icon4Btn = (ImageView) findViewById(R.id.icon4Id);
-        this.icon5Btn = (ImageView) findViewById(R.id.icon5Id);
-        this.icon6Btn = (ImageView) findViewById(R.id.icon6Id);
-        this.drawingBtn = (ImageView) findViewById(R.id.drawingId);
-        this.drawingNumberBtn = (ImageView) findViewById(R.id.drawingNumberId);
-        this.ColorsActivitybtn = (ImageView) findViewById(R.id.ColorsActivitybtn);
-        this.BodyPartsActivitybtn = (ImageView) findViewById(R.id.BodyPartsActivitybtn);
-        this.ProfessionsActivitybtn = (ImageView) findViewById(R.id.ProfessionsActivitybtn);
-        this.ShapesActivitybtn = (ImageView) findViewById(R.id.ShapesActivitybtn);
-        this.VehiclesActivitybtn = (ImageView) findViewById(R.id.VehiclesActivitybtn);
-
-        // Set OnclickListner For Game Categories Buttons
-
-        this.icon1Btn.setOnClickListener(this);
-        this.icon2Btn.setOnClickListener(this);
-        this.icon3Btn.setOnClickListener(this);
-        this.icon4Btn.setOnClickListener(this);
-        this.icon5Btn.setOnClickListener(this);
-        this.icon6Btn.setOnClickListener(this);
-        this.drawingBtn.setOnClickListener(this);
-        this.drawingNumberBtn.setOnClickListener(this);
-        this.ColorsActivitybtn.setOnClickListener(this);
-        this.BodyPartsActivitybtn.setOnClickListener(this);
-        this.ProfessionsActivitybtn.setOnClickListener(this);
-        this.ShapesActivitybtn.setOnClickListener(this);
-        this.VehiclesActivitybtn.setOnClickListener(this);
+        root.icon1Id.setOnClickListener(this);
+        root.icon2Id.setOnClickListener(this);
+        root.icon3Id.setOnClickListener(this);
+        root.icon4Id.setOnClickListener(this);
+        root.icon5Id.setOnClickListener(this);
+        root.icon6Id.setOnClickListener(this);
+        root.icon7Id.setOnClickListener(this);
+        root.icon8Id.setOnClickListener(this);
+        root.icon9Id.setOnClickListener(this);
+        root.icon10Id.setOnClickListener(this);
+        root.icon11Id.setOnClickListener(this);
 
         // Set Animations For Game Categories Buttons
-
-        this.icon1Btn.startAnimation(AnimationUtils.loadAnimation(
+        root.icon1Id.startAnimation(AnimationUtils.loadAnimation(
                 getApplicationContext(), R.anim.rotation
         ));
 
-        this.icon2Btn.startAnimation(AnimationUtils.loadAnimation(
+        root.icon2Id.startAnimation(AnimationUtils.loadAnimation(
                 getApplicationContext(), R.anim.rotation
         ));
 
-        this.icon3Btn.startAnimation(AnimationUtils.loadAnimation(
+        root.icon3Id.startAnimation(AnimationUtils.loadAnimation(
                 getApplicationContext(), R.anim.rotation
         ));
 
-        this.icon4Btn.startAnimation(AnimationUtils.loadAnimation(
+        root.icon4Id.startAnimation(AnimationUtils.loadAnimation(
                 getApplicationContext(), R.anim.rotation
         ));
 
-        this.icon5Btn.startAnimation(AnimationUtils.loadAnimation(
+        root.icon5Id.startAnimation(AnimationUtils.loadAnimation(
                 getApplicationContext(), R.anim.rotation
         ));
 
-        this.icon6Btn.startAnimation(AnimationUtils.loadAnimation(
+        root.icon6Id.startAnimation(AnimationUtils.loadAnimation(
                 getApplicationContext(), R.anim.rotation
         ));
 
-        this.ColorsActivitybtn.startAnimation(AnimationUtils.loadAnimation(
+        root.icon7Id.startAnimation(AnimationUtils.loadAnimation(
                 getApplicationContext(), R.anim.rotation
         ));
 
-        this.BodyPartsActivitybtn.startAnimation(AnimationUtils.loadAnimation(
+        root.icon8Id.startAnimation(AnimationUtils.loadAnimation(
                 getApplicationContext(), R.anim.rotation
         ));
 
-        this.ProfessionsActivitybtn.startAnimation(AnimationUtils.loadAnimation(
+        root.icon9Id.startAnimation(AnimationUtils.loadAnimation(
                 getApplicationContext(), R.anim.rotation
         ));
 
-        this.VehiclesActivitybtn.startAnimation(AnimationUtils.loadAnimation(
+        root.icon10Id.startAnimation(AnimationUtils.loadAnimation(
                 getApplicationContext(), R.anim.rotation
         ));
 
-        this.ShapesActivitybtn.startAnimation(AnimationUtils.loadAnimation(
+        root.icon11Id.startAnimation(AnimationUtils.loadAnimation(
                 getApplicationContext(), R.anim.rotation
         ));
-
-
-        // END Of Animations For Game Categories Buttons
-
-
     }
 
 
@@ -185,22 +137,36 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             this.mLastClickTime = SystemClock.elapsedRealtime();
             int id = view.getId();
             Intent intent;
-            if (id == R.id.drawingId) {
+
+            if (id == R.id.drawTextBtn) {
                 // Intent drawingid = new Intent(MainActivity.this, DrawingActivity.class);
                 // drawingid.putExtra("type", DrawingResourcePool.DRAWING_ALPHABET);
                 // startActivity(drawingid);
                 // playerr.pause();
-            } else if (id == R.id.drawingNumberId) {
+            } else if (id == R.id.drawNumberBtn) {
                 // Intent drawingNumberId = new Intent(MainActivity.this, DrawingActivity.class);
                 // drawingNumberId.putExtra("type", DrawingResourcePool.NUMBER);
                 // startActivity(drawingNumberId);
                 // playerr.pause();
+            } else if (id == R.id.drawBtn) {
+                // requestPermissionWrite();
+                // Intent GoToDrawing = new Intent(this, DrawBoardActivity.class);
+                // startActivity(GoToDrawing);
+            } else if (id == R.id.quizBtn) {
+                // Intent i = new Intent(this, QuizActivity.class);
+                // QuizQuestionHandler.populateList();
+                // QuizActivity.timer = 200;
+                // QuizActivity.QUESTION_LIMIT = 45;
+                // GameCompleteDialog.Score = 30;
+                // startActivity(i);
+                // onAddLodded();
+                // adShow();
             } else {
                 if (id == R.id.icon1Id) {
-                    // Intent icon1Id = new Intent(MainActivity.this, AlphaActivity.class);
-                    // icon1Id.putExtra("type", DrawingResourcePool.ICON1);
-                    // startActivity(icon1Id);
-                    // playerr.pause();
+                    Intent icon1Id = new Intent(MainActivity.this, AlphaActivity.class);
+                    icon1Id.putExtra("type", DrawingResourceSet.ICON1);
+                    startActivity(icon1Id);
+                    playerr.pause();
                 } else if (id == R.id.icon2Id) {
                     // Intent icon2Id = new Intent(MainActivity.this, NumActivity.class);
                     // icon2Id.putExtra("type", DrawingResourcePool.ICON2);
@@ -226,27 +192,27 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                     // icon6Id.putExtra("type", DrawingResourcePool.ICON6);
                     // startActivity(icon6Id);
                     // playerr.pause();
-                } else if (id == R.id.ColorsActivitybtn) {
+                } else if (id == R.id.icon7Id) {
                     // Intent ColorsActivitybtn = new Intent(MainActivity.this, ColorsActivity.class);
                     // ColorsActivitybtn.putExtra("type", DrawingResourcePool.COLORS);
                     // startActivity(ColorsActivitybtn);
                     // playerr.pause();
-                } else if (id == R.id.BodyPartsActivitybtn) {
+                } else if (id == R.id.icon8Id) {
                     // Intent BodyPartsActivitybtn = new Intent(MainActivity.this, BodyPartsActivity.class);
                     // BodyPartsActivitybtn.putExtra("type", DrawingResourcePool.BODY);
                     // startActivity(BodyPartsActivitybtn);
                     // playerr.pause();
-                } else if (id == R.id.ProfessionsActivitybtn) {
+                } else if (id == R.id.icon9Id) {
                     // Intent ProfessionsActivitybtn = new Intent(MainActivity.this, ProfessionsActivity.class);
                     // ProfessionsActivitybtn.putExtra("type", DrawingResourcePool.PROFESSIONS);
                     // startActivity(ProfessionsActivitybtn);
                     // playerr.pause();
-                } else if (id == R.id.ShapesActivitybtn) {
+                } else if (id == R.id.icon10Id) {
                     // Intent ShapesActivitybtn = new Intent(MainActivity.this, ShapesActivity.class);
                     // ShapesActivitybtn.putExtra("type", DrawingResourcePool.SHAPES);
                     // startActivity(ShapesActivitybtn);
                     // playerr.pause();
-                } else if (id == R.id.VehiclesActivitybtn) {
+                } else if (id == R.id.icon11Id) {
                     // Intent VehiclesActivitybtn = new Intent(MainActivity.this, VehiclesActivity.class);
                     // VehiclesActivitybtn.putExtra("type", DrawingResourcePool.VEHICLES);
                     // startActivity(VehiclesActivitybtn);
@@ -254,11 +220,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 } else if (id == R.id.btnmusic) {
                     if (playerr.isPlaying()) {
                         this.playerr.pause();
-                        btnmusic.setImageResource(R.drawable.music_off);
+                        root.btnmusic.setImageResource(R.drawable.music_off);
                     } else {
                         this.playerr.start();
                         this.playerr.setLooping(true);
-                        btnmusic.setImageResource(R.drawable.music_on);
+                        root.btnmusic.setImageResource(R.drawable.music_on);
                     }
                 } else if (id == R.id.btn_privacy) {
                     // Intent btn_privacy = new Intent(this, PrivacyWebview.class);
@@ -269,19 +235,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                     // ShowRateDialog();
                 } else if (id == R.id.btn_exit) {
                     // ShowExitDialog();
-                } else if (id == R.id.drawbtn) {
-                    // requestPermissionWrite();
-                    // Intent GoToDrawing = new Intent(this, DrawBoardActivity.class);
-                    // startActivity(GoToDrawing);
-                } else if (id == R.id.Quizbtn) {
-                    // Intent i = new Intent(this, QuizActivity.class);
-                    // QuizQuestionHandler.populateList();
-                    // QuizActivity.timer = 200;
-                    // QuizActivity.QUESTION_LIMIT = 45;
-                    // GameCompleteDialog.Score = 30;
-                    // startActivity(i);
-                    // onAddLodded();
-                    // adShow();
                 }
             }
         }

@@ -59,7 +59,7 @@
                 android:weightSum="3">
 
                 <ImageView
-                    android:id="@+id/drawingId"
+                    android:id="@+id/drawTextBtn"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -68,7 +68,7 @@
                     android:src="@drawable/writealphabets2" />
 
                 <ImageView
-                    android:id="@+id/drawingNumberId"
+                    android:id="@+id/drawNumberBtn"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/writenumbericon" />
@@ -290,8 +290,7 @@
 
 
                                 <ImageView
-
-                                    android:id="@+id/icon5Id"
+                                    android:id="@+id/icon3Id"
                                     android:layout_width="150dp"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -360,7 +359,7 @@
 
                                 <ImageView
 
-                                    android:id="@+id/icon6Id"
+                                    android:id="@+id/icon4Id"
                                     android:layout_width="150dp"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -415,7 +414,7 @@
 
                                 <ImageView
 
-                                    android:id="@+id/icon3Id"
+                                    android:id="@+id/icon5Id"
                                     android:layout_width="150dp"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -471,7 +470,7 @@
 
                                 <ImageView
 
-                                    android:id="@+id/icon4Id"
+                                    android:id="@+id/icon6Id"
                                     android:layout_width="150dp"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -540,7 +539,7 @@
 
                                 <ImageView
 
-                                    android:id="@+id/ColorsActivitybtn"
+                                    android:id="@+id/icon7Id"
                                     android:layout_width="150dp"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -595,7 +594,7 @@
 
                                 <ImageView
 
-                                    android:id="@+id/BodyPartsActivitybtn"
+                                    android:id="@+id/icon8Id"
                                     android:layout_width="150dp"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -665,7 +664,7 @@
 
                                 <ImageView
 
-                                    android:id="@+id/ProfessionsActivitybtn"
+                                    android:id="@+id/icon9Id"
                                     android:layout_width="150dp"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -735,7 +734,7 @@
 
                                 <ImageView
 
-                                    android:id="@+id/ShapesActivitybtn"
+                                    android:id="@+id/icon10Id"
                                     android:layout_width="150dp"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -805,7 +804,7 @@
 
                                 <ImageView
 
-                                    android:id="@+id/VehiclesActivitybtn"
+                                    android:id="@+id/icon11Id"
                                     android:layout_width="150dp"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -860,14 +859,14 @@
 
 
             <ImageView
-                android:id="@+id/Quizbtn"
+                android:id="@+id/quizBtn"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_weight="1"
                 android:src="@drawable/quiz_icon" />
 
             <ImageView
-                android:id="@+id/drawbtn"
+                android:id="@+id/drawBtn"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_weight="1"
