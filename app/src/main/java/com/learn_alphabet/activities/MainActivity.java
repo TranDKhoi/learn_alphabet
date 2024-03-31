@@ -31,8 +31,6 @@ import com.learn_alphabet.utils.SharedPreference;
 public class MainActivity extends AppCompatActivity implements OnClickListener {
     private static final String TAG = "MainActivity";
     private AudioManager audio;
-    ImageView drawbtn = null;
-    ImageView Quizbtn = null;
     public static SharedPreference sharedPreference;
     private long mLastClickTime = 0;
     MediaPlayer playerr;
