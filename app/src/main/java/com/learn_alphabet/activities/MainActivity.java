@@ -23,6 +23,7 @@ import androidx.core.app.ActivityCompat;
 import com.learn_alphabet.R;
 import com.learn_alphabet.activities.learn_speak.LearnActivity;
 import com.learn_alphabet.activities.learn_speak.LearnResourceSet;
+import com.learn_alphabet.activities.quiz.javafiles.GameCompleteDialog;
 import com.learn_alphabet.activities.quiz.utils.QuizQuestionHandler;
 import com.learn_alphabet.databinding.ActivityMainBinding;
 import com.learn_alphabet.utils.SharedPreference;
@@ -151,14 +152,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 // Intent GoToDrawing = new Intent(this, DrawBoardActivity.class);
                 // startActivity(GoToDrawing);
             } else if (id == R.id.quizBtn) {
-                // Intent i = new Intent(this, QuizActivity.class);
-                // QuizQuestionHandler.populateList();
-                // QuizActivity.timer = 200;
-                // QuizActivity.QUESTION_LIMIT = 45;
-                // GameCompleteDialog.Score = 30;
-                // startActivity(i);
-                // onAddLodded();
-                // adShow();
+                 Intent i = new Intent(this, QuizActivity.class);
+                 QuizQuestionHandler.populateList();
+                 QuizActivity.timer = 200;
+                 QuizActivity.QUESTION_LIMIT = 45;
+                 GameCompleteDialog.Score = 30;
+                 startActivity(i);
+                 onAddLodded();
+                 adShow();
             } else {
                 if (id == R.id.icon1Id) {
                     Intent icon1Id = new Intent(MainActivity.this, LearnActivity.class);
