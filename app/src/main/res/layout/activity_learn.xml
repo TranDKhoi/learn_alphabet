@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     android:background="@drawable/abc_bg">
 
-    <RelativeLayout
+    <FrameLayout
         android:id="@+id/bgLayout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -13,20 +13,17 @@
         android:layout_marginBottom="5.0dip">
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/abc_bg_3"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="60dp">
 
             <ImageView
                 android:id="@+id/itemImg"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_gravity="center"
+                android:layout_height="match_parent"
                 android:layout_marginBottom="35dp"
-                android:scaleType="fitCenter"
                 android:src="@drawable/a" />
         </LinearLayout>
 
@@ -35,8 +32,7 @@
             android:id="@+id/prevBtn"
             android:layout_width="65.0dip"
             android:layout_height="65.0dip"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
             android:layout_marginStart="15.0dip"
             android:layout_marginBottom="10.0dip"
             android:scaleType="fitCenter"
@@ -47,8 +43,7 @@
             android:id="@+id/nextBtn"
             android:layout_width="65.0dip"
             android:layout_height="65.0dip"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom|end"
             android:layout_marginEnd="15.0dip"
             android:layout_marginBottom="10.0dip"
             android:scaleType="fitCenter"
@@ -64,6 +59,6 @@
             android:adjustViewBounds="false"
             android:src="@drawable/bak" />
 
-    </RelativeLayout>
+    </FrameLayout>
 
 </RelativeLayout>

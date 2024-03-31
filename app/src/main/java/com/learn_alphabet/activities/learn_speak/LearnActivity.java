@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.learn_alphabet.R;
 import com.learn_alphabet.databinding.ActivityLearnBinding;
 
+import java.util.List;
+
 public class LearnActivity extends AppCompatActivity implements OnClickListener {
     private MediaPlayer mediaPlayer = null;
     LearnResourceSet resourceSet = new LearnResourceSet();
@@ -20,6 +22,8 @@ public class LearnActivity extends AppCompatActivity implements OnClickListener 
     private int currentPosition = 0;
     ActivityLearnBinding root;
     String type;
+    private List<Integer> imagesData;
+    private List<Integer> soundsData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,17 +34,20 @@ public class LearnActivity extends AppCompatActivity implements OnClickListener 
         setContentView(root.getRoot());
 
         type = getIntent().getStringExtra("type");
+        imagesData = resourceSet.dataMap.get(type).get(0);
+        soundsData = resourceSet.dataMap.get(type).get(1);
 
         root.nextBtn.setOnClickListener(this);
         root.prevBtn.setOnClickListener(this);
         root.itemImg.setOnClickListener(this);
+        root.backBtn.setOnClickListener(this);
 
-        totalItem = resourceSet.icon1Images.length;
-        root.itemImg.setImageResource(resourceSet.icon1Images[currentPosition]);
+        totalItem = soundsData.size();
+        root.itemImg.setImageResource(imagesData.get(0));
         root.bgLayout.setBackgroundResource(R.drawable.abc_bg);
         root.bgcolorLayout.setBackgroundColor(Color.parseColor("#30054e"));
 
-        mediaPlayer = MediaPlayer.create(this, resourceSet.icon1Sound[currentPosition]);
+        mediaPlayer = MediaPlayer.create(this, soundsData.get(0));
         mediaPlayer.start();
 
         updatePreviousButton();
@@ -55,26 +62,36 @@ public class LearnActivity extends AppCompatActivity implements OnClickListener 
                 gotoNext();
             }
 
-            mediaPlayer.stop();
-            mediaPlayer.release();
-            mediaPlayer = null;
-            mediaPlayer = MediaPlayer.create(this, resourceSet.icon1Sound[currentPosition]);
-            mediaPlayer.start();
+            if (mediaPlayer != null) {
+                mediaPlayer.stop();
+                mediaPlayer.release();
+                mediaPlayer = null;
+            }
+            mediaPlayer = MediaPlayer.create(this, soundsData.get(currentPosition));
+            if (mediaPlayer != null) {
+                mediaPlayer.start();
+            }
             return;
         }
         if (id == R.id.nextBtn) {
-            mediaPlayer.stop();
+            if (mediaPlayer != null) {
+                mediaPlayer.stop();
+            }
             gotoNext();
             return;
         }
         if (id == R.id.prevBtn) {
-            mediaPlayer.stop();
+            if (mediaPlayer != null) {
+                mediaPlayer.stop();
+            }
             gotoPrevious();
             return;
         }
 
         if (id == R.id.backBtn) {
-            LearnActivity.this.mediaPlayer.stop();
+            if (mediaPlayer != null) {
+                mediaPlayer.stop();
+            }
             exitByBackKey();
         }
     }
@@ -84,11 +101,13 @@ public class LearnActivity extends AppCompatActivity implements OnClickListener 
         updateNextButton();
         updatePreviousButton();
         if (currentPosition >= 0 && currentPosition < totalItem) {
-            mediaPlayer.stop();
-            mediaPlayer.release();
-            mediaPlayer = null;
-            root.itemImg.setImageResource(resourceSet.icon1Images[currentPosition]);
-            mediaPlayer = MediaPlayer.create(this, resourceSet.icon1Sound[currentPosition]);
+            if (mediaPlayer != null) {
+                mediaPlayer.stop();
+                mediaPlayer.release();
+                mediaPlayer = null;
+            }
+            root.itemImg.setImageResource(imagesData.get(currentPosition));
+            mediaPlayer = MediaPlayer.create(this, soundsData.get(currentPosition));
             mediaPlayer.start();
         }
 
@@ -120,12 +139,16 @@ public class LearnActivity extends AppCompatActivity implements OnClickListener 
         updateNextButton();
         updatePreviousButton();
         if (currentPosition >= 0 && currentPosition < totalItem) {
-            mediaPlayer.stop();
-            mediaPlayer.release();
-            mediaPlayer = null;
-            root.itemImg.setImageResource(resourceSet.icon1Images[currentPosition]);
-            mediaPlayer = MediaPlayer.create(LearnActivity.this, resourceSet.icon1Sound[currentPosition]);
-            mediaPlayer.start();
+            if (mediaPlayer != null) {
+                mediaPlayer.stop();
+                mediaPlayer.release();
+                mediaPlayer = null;
+            }
+            root.itemImg.setImageResource(imagesData.get(currentPosition));
+            mediaPlayer = MediaPlayer.create(LearnActivity.this, imagesData.get(currentPosition));
+            if (mediaPlayer != null) {
+                mediaPlayer.start();
+            }
         }
 
     }
@@ -136,20 +159,26 @@ public class LearnActivity extends AppCompatActivity implements OnClickListener 
     }
 
     protected void onUserLeaveHint() {
-        mediaPlayer.stop();
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+        }
         super.onUserLeaveHint();
     }
 
     protected void onPause() {
         super.onPause();
         if (!((PowerManager) getSystemService(POWER_SERVICE)).isScreenOn()) {
-            mediaPlayer.stop();
+            if (mediaPlayer != null) {
+                mediaPlayer.stop();
+            }
         }
     }
 
     public void exitByBackKey() {
-        mediaPlayer.stop();
-        mediaPlayer.release();
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+        }
         mediaPlayer = null;
         finish();
     }

@@ -173,50 +173,50 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                     startActivity(icon2Id);
                     playerr.pause();
                 } else if (id == R.id.icon3Id) {
-                    // Intent icon3Id = new Intent(MainActivity.this, FruitsActivity.class);
-                    // icon3Id.putExtra("type", DrawingResourcePool.ICON3);
-                    // startActivity(icon3Id);
-                    // playerr.pause();
+                    Intent icon3Id = new Intent(MainActivity.this, LearnActivity.class);
+                    icon3Id.putExtra("type", LearnResourceSet.ICON3);
+                    startActivity(icon3Id);
+                    playerr.pause();
                 } else if (id == R.id.icon4Id) {
-                    // Intent icon4Id = new Intent(MainActivity.this, AnimalActivity.class);
-                    // icon4Id.putExtra("type", DrawingResourcePool.ICON4);
-                    // startActivity(icon4Id);
-                    // playerr.stop();
+                    Intent icon4Id = new Intent(MainActivity.this, LearnActivity.class);
+                    icon4Id.putExtra("type", LearnResourceSet.ICON4);
+                    startActivity(icon4Id);
+                    playerr.stop();
                 } else if (id == R.id.icon5Id) {
-                    // Intent icon5Id = new Intent(MainActivity.this, DaysActivity.class);
-                    // icon5Id.putExtra("type", DrawingResourcePool.ICON5);
-                    // startActivity(icon5Id);
-                    // playerr.pause();
+                    Intent icon5Id = new Intent(MainActivity.this, LearnActivity.class);
+                    icon5Id.putExtra("type", LearnResourceSet.ICON5);
+                    startActivity(icon5Id);
+                    playerr.pause();
                 } else if (id == R.id.icon6Id) {
-                    // Intent icon6Id = new Intent(MainActivity.this, MonthsActivity.class);
-                    // icon6Id.putExtra("type", DrawingResourcePool.ICON6);
-                    // startActivity(icon6Id);
-                    // playerr.pause();
+                    Intent icon6Id = new Intent(MainActivity.this, LearnActivity.class);
+                    icon6Id.putExtra("type", LearnResourceSet.ICON6);
+                    startActivity(icon6Id);
+                    playerr.pause();
                 } else if (id == R.id.icon7Id) {
-                    // Intent ColorsActivitybtn = new Intent(MainActivity.this, ColorsActivity.class);
-                    // ColorsActivitybtn.putExtra("type", DrawingResourcePool.COLORS);
-                    // startActivity(ColorsActivitybtn);
-                    // playerr.pause();
+                    Intent icon7Id = new Intent(MainActivity.this, LearnActivity.class);
+                    icon7Id.putExtra("type", LearnResourceSet.ICON7);
+                    startActivity(icon7Id);
+                    playerr.pause();
                 } else if (id == R.id.icon8Id) {
-                    // Intent BodyPartsActivitybtn = new Intent(MainActivity.this, BodyPartsActivity.class);
-                    // BodyPartsActivitybtn.putExtra("type", DrawingResourcePool.BODY);
-                    // startActivity(BodyPartsActivitybtn);
-                    // playerr.pause();
+                    Intent icon8Id = new Intent(MainActivity.this, LearnActivity.class);
+                    icon8Id.putExtra("type", LearnResourceSet.ICON8);
+                    startActivity(icon8Id);
+                    playerr.pause();
                 } else if (id == R.id.icon9Id) {
-                    // Intent ProfessionsActivitybtn = new Intent(MainActivity.this, ProfessionsActivity.class);
-                    // ProfessionsActivitybtn.putExtra("type", DrawingResourcePool.PROFESSIONS);
-                    // startActivity(ProfessionsActivitybtn);
-                    // playerr.pause();
+                    Intent icon9Id = new Intent(MainActivity.this, LearnActivity.class);
+                    icon9Id.putExtra("type", LearnResourceSet.ICON9);
+                    startActivity(icon9Id);
+                    playerr.pause();
                 } else if (id == R.id.icon10Id) {
-                    // Intent ShapesActivitybtn = new Intent(MainActivity.this, ShapesActivity.class);
-                    // ShapesActivitybtn.putExtra("type", DrawingResourcePool.SHAPES);
-                    // startActivity(ShapesActivitybtn);
-                    // playerr.pause();
+                    Intent icon10Id = new Intent(MainActivity.this, LearnActivity.class);
+                    icon10Id.putExtra("type", LearnResourceSet.ICON10);
+                    startActivity(icon10Id);
+                    playerr.pause();
                 } else if (id == R.id.icon11Id) {
-                    // Intent VehiclesActivitybtn = new Intent(MainActivity.this, VehiclesActivity.class);
-                    // VehiclesActivitybtn.putExtra("type", DrawingResourcePool.VEHICLES);
-                    // startActivity(VehiclesActivitybtn);
-                    // playerr.pause();
+                    Intent icon11Id = new Intent(MainActivity.this, LearnActivity.class);
+                    icon11Id.putExtra("type", LearnResourceSet.ICON11);
+                    startActivity(icon11Id);
+                    playerr.pause();
                 } else if (id == R.id.btnmusic) {
                     if (playerr.isPlaying()) {
                         this.playerr.pause();
