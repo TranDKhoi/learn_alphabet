@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.learn_alphabet.R;
+import com.learn_alphabet.activities.drawingboard.activity.DrawBoardActivity;
 import com.learn_alphabet.activities.quiz.utils.QuizQuestionHandler;
 import com.learn_alphabet.adapter.LearnAdapter;
 import com.learn_alphabet.databinding.ActivityMainBinding;
@@ -92,9 +93,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 // startActivity(drawingNumberId);
                 // playerr.pause();
             } else if (id == R.id.drawBtn) {
-                // requestPermissionWrite();
-                // Intent GoToDrawing = new Intent(this, DrawBoardActivity.class);
-                // startActivity(GoToDrawing);
+                 requestPermissionWrite();
+                 Intent GoToDrawing = new Intent(this, DrawBoardActivity.class);
+                 startActivity(GoToDrawing);
             } else if (id == R.id.quizBtn) {
                 // Intent i = new Intent(this, QuizActivity.class);
                 // QuizQuestionHandler.populateList();

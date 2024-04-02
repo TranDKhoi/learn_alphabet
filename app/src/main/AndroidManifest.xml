@@ -36,6 +36,10 @@
         <activity
             android:name=".activities.learn_speak.LearnActivity"
             android:screenOrientation="landscape" />
+        <activity
+            android:name="com.learn_alphabet.activities.drawingboard.activity.DrawBoardActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>
