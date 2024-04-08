@@ -13,8 +13,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +22,9 @@ import com.learn_alphabet.R;
 import com.learn_alphabet.activities.learn_speak.LearnActivity;
 import com.learn_alphabet.activities.learn_speak.LearnResourceSet;
 import com.learn_alphabet.activities.quiz.javafiles.GameCompleteDialog;
+import com.learn_alphabet.activities.drawingboard.activity.DrawBoardActivity;
 import com.learn_alphabet.activities.quiz.utils.QuizQuestionHandler;
+import com.learn_alphabet.adapter.LearnAdapter;
 import com.learn_alphabet.databinding.ActivityMainBinding;
 import com.learn_alphabet.utils.SharedPreference;
 
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     MediaPlayer playerr;
     public Dialog myDialog;
     private String musicStatus;
+    private LearnAdapter learnAdapter;
     ActivityMainBinding root;
 
     @Override
@@ -59,6 +60,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
         QuizQuestionHandler.populateList();
 
+
+        learnAdapter = new LearnAdapter(this);
+        root.rcv.setAdapter(learnAdapter);
+
         root.btnmusic.setOnClickListener(this);
         root.btnPrivacy.setOnClickListener(this);
         root.btnShare.setOnClickListener(this);
@@ -69,63 +74,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         root.quizBtn.setOnClickListener(this);
         root.drawTextBtn.setOnClickListener(this);
         root.drawNumberBtn.setOnClickListener(this);
-
-        root.icon1Id.setOnClickListener(this);
-        root.icon2Id.setOnClickListener(this);
-        root.icon3Id.setOnClickListener(this);
-        root.icon4Id.setOnClickListener(this);
-        root.icon5Id.setOnClickListener(this);
-        root.icon6Id.setOnClickListener(this);
-        root.icon7Id.setOnClickListener(this);
-        root.icon8Id.setOnClickListener(this);
-        root.icon9Id.setOnClickListener(this);
-        root.icon10Id.setOnClickListener(this);
-        root.icon11Id.setOnClickListener(this);
-
-        // Set Animations For Game Categories Buttons
-        root.icon1Id.startAnimation(AnimationUtils.loadAnimation(
-                getApplicationContext(), R.anim.rotation
-        ));
-
-        root.icon2Id.startAnimation(AnimationUtils.loadAnimation(
-                getApplicationContext(), R.anim.rotation
-        ));
-
-        root.icon3Id.startAnimation(AnimationUtils.loadAnimation(
-                getApplicationContext(), R.anim.rotation
-        ));
-
-        root.icon4Id.startAnimation(AnimationUtils.loadAnimation(
-                getApplicationContext(), R.anim.rotation
-        ));
-
-        root.icon5Id.startAnimation(AnimationUtils.loadAnimation(
-                getApplicationContext(), R.anim.rotation
-        ));
-
-        root.icon6Id.startAnimation(AnimationUtils.loadAnimation(
-                getApplicationContext(), R.anim.rotation
-        ));
-
-        root.icon7Id.startAnimation(AnimationUtils.loadAnimation(
-                getApplicationContext(), R.anim.rotation
-        ));
-
-        root.icon8Id.startAnimation(AnimationUtils.loadAnimation(
-                getApplicationContext(), R.anim.rotation
-        ));
-
-        root.icon9Id.startAnimation(AnimationUtils.loadAnimation(
-                getApplicationContext(), R.anim.rotation
-        ));
-
-        root.icon10Id.startAnimation(AnimationUtils.loadAnimation(
-                getApplicationContext(), R.anim.rotation
-        ));
-
-        root.icon11Id.startAnimation(AnimationUtils.loadAnimation(
-                getApplicationContext(), R.anim.rotation
-        ));
     }
 
 
@@ -148,9 +96,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 // startActivity(drawingNumberId);
                 // playerr.pause();
             } else if (id == R.id.drawBtn) {
-                // requestPermissionWrite();
-                // Intent GoToDrawing = new Intent(this, DrawBoardActivity.class);
-                // startActivity(GoToDrawing);
+                 requestPermissionWrite();
+                 Intent GoToDrawing = new Intent(this, DrawBoardActivity.class);
+                 startActivity(GoToDrawing);
             } else if (id == R.id.quizBtn) {
                  Intent i = new Intent(this, QuizActivity.class);
                  QuizQuestionHandler.populateList();
@@ -161,62 +109,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                  onAddLodded();
                  adShow();
             } else {
-                if (id == R.id.icon1Id) {
-                    Intent icon1Id = new Intent(MainActivity.this, LearnActivity.class);
-                    icon1Id.putExtra("type", LearnResourceSet.ICON1);
-                    startActivity(icon1Id);
-                    playerr.pause();
-                } else if (id == R.id.icon2Id) {
-                    Intent icon2Id = new Intent(MainActivity.this, LearnActivity.class);
-                    icon2Id.putExtra("type", LearnResourceSet.ICON2);
-                    startActivity(icon2Id);
-                    playerr.pause();
-                } else if (id == R.id.icon3Id) {
-                    Intent icon3Id = new Intent(MainActivity.this, LearnActivity.class);
-                    icon3Id.putExtra("type", LearnResourceSet.ICON3);
-                    startActivity(icon3Id);
-                    playerr.pause();
-                } else if (id == R.id.icon4Id) {
-                    Intent icon4Id = new Intent(MainActivity.this, LearnActivity.class);
-                    icon4Id.putExtra("type", LearnResourceSet.ICON4);
-                    startActivity(icon4Id);
-                    playerr.stop();
-                } else if (id == R.id.icon5Id) {
-                    Intent icon5Id = new Intent(MainActivity.this, LearnActivity.class);
-                    icon5Id.putExtra("type", LearnResourceSet.ICON5);
-                    startActivity(icon5Id);
-                    playerr.pause();
-                } else if (id == R.id.icon6Id) {
-                    Intent icon6Id = new Intent(MainActivity.this, LearnActivity.class);
-                    icon6Id.putExtra("type", LearnResourceSet.ICON6);
-                    startActivity(icon6Id);
-                    playerr.pause();
-                } else if (id == R.id.icon7Id) {
-                    Intent icon7Id = new Intent(MainActivity.this, LearnActivity.class);
-                    icon7Id.putExtra("type", LearnResourceSet.ICON7);
-                    startActivity(icon7Id);
-                    playerr.pause();
-                } else if (id == R.id.icon8Id) {
-                    Intent icon8Id = new Intent(MainActivity.this, LearnActivity.class);
-                    icon8Id.putExtra("type", LearnResourceSet.ICON8);
-                    startActivity(icon8Id);
-                    playerr.pause();
-                } else if (id == R.id.icon9Id) {
-                    Intent icon9Id = new Intent(MainActivity.this, LearnActivity.class);
-                    icon9Id.putExtra("type", LearnResourceSet.ICON9);
-                    startActivity(icon9Id);
-                    playerr.pause();
-                } else if (id == R.id.icon10Id) {
-                    Intent icon10Id = new Intent(MainActivity.this, LearnActivity.class);
-                    icon10Id.putExtra("type", LearnResourceSet.ICON10);
-                    startActivity(icon10Id);
-                    playerr.pause();
-                } else if (id == R.id.icon11Id) {
-                    Intent icon11Id = new Intent(MainActivity.this, LearnActivity.class);
-                    icon11Id.putExtra("type", LearnResourceSet.ICON11);
-                    startActivity(icon11Id);
-                    playerr.pause();
-                } else if (id == R.id.btnmusic) {
+                if (id == R.id.btnmusic) {
                     if (playerr.isPlaying()) {
                         this.playerr.pause();
                         root.btnmusic.setImageResource(R.drawable.music_off);
