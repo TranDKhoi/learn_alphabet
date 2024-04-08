@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -106,8 +107,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                  QuizActivity.QUESTION_LIMIT = 45;
                  GameCompleteDialog.Score = 30;
                  startActivity(i);
-                 onAddLodded();
-                 adShow();
             } else {
                 if (id == R.id.btnmusic) {
                     if (playerr.isPlaying()) {

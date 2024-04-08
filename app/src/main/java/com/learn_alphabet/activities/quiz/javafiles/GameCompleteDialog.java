@@ -37,7 +37,7 @@ public class GameCompleteDialog  implements OnClickListener {
     }
 
     public void buildDialog(){
-        View v = inflater.inflate(R.layout.score_save_dialog,null,false);
+        View v = inflater.inflate(R.layout.score_save_dialog, null, false);
         dialog.setContentView(v);
         dialog.setCancelable(false);
         this.findDialogViews(v);
@@ -50,7 +50,7 @@ public class GameCompleteDialog  implements OnClickListener {
 
     private  void findDialogViews(View view){
         txt_time = (TextView)view.findViewById(R.id.txt_score_time_value);
-        scoreTitle = (TextView)view.findViewById(R.id.scoretitle);
+        scoreTitle = (TextView)view.findViewById(R.id.score_title);
         winningIcon = (ImageView) view.findViewById(R.id.winningicon);
         btn_cancel = (Button)view.findViewById(R.id.btn_score_cancel);
         btn_retry = (Button)view.findViewById(R.id.btn_score_retry);
