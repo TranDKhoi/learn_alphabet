@@ -41,13 +41,6 @@ import androidx.core.content.res.ResourcesCompat;
 import com.learn_alphabet.AdsController;
 import com.learn_alphabet.GlobalvBlue;
 import com.learn_alphabet.R;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
 
 public class DrawingActivity extends AppCompatActivity implements OnClickListener, OnTouchListener {
@@ -71,7 +64,6 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
    DrawingResourcePool drawingResourcePool;
     private int totalItem = 0;
     private String type = "";
-    private InterstitialAd mInterstitialAd;
     public class DrawingView extends View {
         private static final float TOUCH_TOLERANCE = 4.0f;
         private Bitmap bm;
@@ -212,16 +204,6 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
         setContentView(R.layout.activity_drawing);
 
         // init ads
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-                // createCustominterstitial();
-                // ShowAds();
-                onAddLodded();
-                // adShow();
-
-            }
-        });
 
         btnClick();
         this.audio = (AudioManager) getSystemService(AUDIO_SERVICE);
@@ -244,7 +226,6 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
         this.params = (LayoutParams) this.drawingView.getLayoutParams();
         this.dv = new DrawingView(this);
         this.dv.setLayoutParams(this.params);
-        this.imghomeee.setVisibility(4);
         this.parent = (ViewGroup) this.drawingView.getParent();
         int indexOfChild = this.parent.indexOfChild(this.drawingView);
         this.parent.removeView(this.drawingView);
@@ -300,20 +281,19 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
         int id = view.getId();
         Integer num;
         if (id != R.id.nextId) {
-            switch (id) {
-                case R.id.playId:
-                    changeStroke();
-                    return;
-                case R.id.prevId:
-                    num = this.position;
-                    this.position = Integer.valueOf(this.position.intValue() - 1);
-                    this.mediaPlayer.stop();
-                    changeStroke();
-                    gotoPrevious();
-                    return;
-                default:
-                    return;
+            if (id == R.id.playId)
+            {
+                changeStroke();
+                return;
+            } else if (id == R.id.prevId){
+                num = this.position;
+                this.position = Integer.valueOf(this.position.intValue() - 1);
+                this.mediaPlayer.stop();
+                changeStroke();
+                gotoPrevious();
+                return;
             }
+           return;
         }
         num = this.position;
         this.position = Integer.valueOf(this.position.intValue() + 1);
@@ -495,26 +475,7 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
 
     public void onAddLodded() {
         //mInterstitialAd.loadAd(new AdRequest.Builder().build());
-        AdRequest adRequest = new AdRequest.Builder().build();
 
-        InterstitialAd.load(this,getString(R.string.admob_interstitial_id), adRequest, new InterstitialAdLoadCallback() {
-            @Override
-            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                // The mInterstitialAd reference will be null until
-                // an ad is loaded.
-                mInterstitialAd = interstitialAd;
-                Log.i("TAG", "onAdLoaded");
-                //  LoadInter();
-            }
-
-            @Override
-            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                // Handle the error
-                Log.i("TAG", loadAdError.getMessage());
-                mInterstitialAd = null;
-            }
-
-        });
     }
 
     public void adShow() {
@@ -522,13 +483,7 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
         AdsController.adCount = AdsController.adCount + 1;
         if(AdsController.adCount % AdsController.adShow == 0) {
             // Show the ad if it's ready. Otherwise toast and restart the game.
-            if (mInterstitialAd != null) {
-                mInterstitialAd.show(this);
-                onAddLodded();
-            } else {
-              //  Toast.makeText(this, "Ad did not load", Toast.LENGTH_SHORT).show();
 
-            }
         }
 
     }
