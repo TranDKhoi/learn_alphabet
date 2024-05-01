@@ -1,6 +1,6 @@
 package com.learn_alphabet.activities.drawing;
 
-import com.companyname.english_for_kids_preschool.R;
+import com.learn_alphabet.R;
 
 import java.lang.reflect.Array;
 

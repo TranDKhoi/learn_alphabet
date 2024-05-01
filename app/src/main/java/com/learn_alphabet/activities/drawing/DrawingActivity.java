@@ -38,9 +38,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
-import com.companyname.english_for_kids_preschool.AdsController;
-import com.companyname.english_for_kids_preschool.GlobalvBlue;
-import com.companyname.english_for_kids_preschool.R;
+import com.learn_alphabet.AdsController;
+import com.learn_alphabet.GlobalvBlue;
+import com.learn_alphabet.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
