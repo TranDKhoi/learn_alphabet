@@ -7,7 +7,10 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.FragmentActivity;
+
+import com.learn_alphabet.R;
 
 @SuppressLint("NewApi")
 public class BaseFragmentActivity extends FragmentActivity {
@@ -22,9 +25,7 @@ public class BaseFragmentActivity extends FragmentActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         // TODO Auto-generated method stub
         super.onCreate(arg0);
-        mainFont = Typeface.createFromAsset(getAssets(),
-                "fonts/Franklin Gothic.otf");
-
+        mainFont = ResourcesCompat.getFont(this, R.font.franklin_gothic);
     }
 
 }

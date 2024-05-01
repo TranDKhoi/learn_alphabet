@@ -24,11 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Learn_alphabet">
         <activity
-            android:name=".activities.quiz.javafiles.TimeCompleteDialog"
-            android:exported="false" />
-        <activity
             android:name=".activities.QuizActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activities.MainActivity"
             android:exported="true"
