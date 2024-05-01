@@ -1,4 +1,4 @@
-package com.learn_alphabet.models;
+package com.learn_alphabet.activities.learn_speak.models;
 
 public class LearnModel {
 

@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 
-import com.learn_alphabet.activities.QuizActivity;
+import com.learn_alphabet.activities.quiz.QuizActivity;
 import com.learn_alphabet.activities.quiz.interfaces.AnswerListener;
 
 public class AnswerFinder implements Animation.AnimationListener {

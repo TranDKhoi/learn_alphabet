@@ -1,19 +1,15 @@
-package com.learn_alphabet.activities.drawingboard.activity;
+package com.learn_alphabet.activities.drawingboard;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-
-import androidx.annotation.NonNull;
 
 import com.learn_alphabet.R;
 //import com.companyname.english_for_kids_preschool.drawingboard.utility.AppUtilities;
@@ -25,7 +21,6 @@ import com.learn_alphabet.activities.drawingboard.utility.DrawingView;
 //import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 //import com.google.android.gms.ads.interstitial.InterstitialAd;
 //import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
-import com.learn_alphabet.activities.drawingboard.utility.DrawingView;
 
 
 public class DrawBoardActivity extends BaseActivity implements View.OnClickListener {
@@ -190,7 +185,7 @@ public class DrawBoardActivity extends BaseActivity implements View.OnClickListe
             //draw button clicked
             final Dialog brushDialog = new Dialog(this);
             brushDialog.setTitle(getResources().getString(R.string.brush_size));
-            brushDialog.setContentView(R.layout.brush_chooser);
+            brushDialog.setContentView(R.layout.layout_brush_chooser);
 
             ImageButton smallBtn = (ImageButton) brushDialog.findViewById(R.id.small_brush);
             smallBtn.setOnClickListener(new View.OnClickListener() {
@@ -228,7 +223,7 @@ public class DrawBoardActivity extends BaseActivity implements View.OnClickListe
             //switch to erase - choose size
             final Dialog brushDialog = new Dialog(this);
             brushDialog.setTitle(getResources().getString(R.string.easer_size));
-            brushDialog.setContentView(R.layout.brush_chooser);
+            brushDialog.setContentView(R.layout.layout_brush_chooser);
 
             ImageButton smallBtn = (ImageButton) brushDialog.findViewById(R.id.small_brush);
             smallBtn.setOnClickListener(new View.OnClickListener() {

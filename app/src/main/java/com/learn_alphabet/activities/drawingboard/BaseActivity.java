@@ -1,4 +1,4 @@
-package com.learn_alphabet.activities.drawingboard.activity;
+package com.learn_alphabet.activities.drawingboard;
 
 import android.app.Activity;
 import android.content.Context;

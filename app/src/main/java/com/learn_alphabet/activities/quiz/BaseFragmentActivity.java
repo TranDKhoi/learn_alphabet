@@ -23,7 +23,6 @@ public class BaseFragmentActivity extends FragmentActivity {
     protected void onCreate(Bundle arg0) {
         requestWindowFeature(1);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        // TODO Auto-generated method stub
         super.onCreate(arg0);
         mainFont = ResourcesCompat.getFont(this, R.font.franklin_gothic);
     }

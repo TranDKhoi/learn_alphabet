@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.learn_alphabet.R;
-import com.learn_alphabet.activities.QuizActivity;
+import com.learn_alphabet.activities.quiz.QuizActivity;
 import com.learn_alphabet.activities.quiz.utils.QuizQuestionHandler;
 
 public class GameCompleteDialog  implements OnClickListener {
@@ -37,7 +37,7 @@ public class GameCompleteDialog  implements OnClickListener {
     }
 
     public void buildDialog(){
-        View v = inflater.inflate(R.layout.score_save_dialog, null, false);
+        View v = inflater.inflate(R.layout.dialog_score_save, null, false);
         dialog.setContentView(v);
         dialog.setCancelable(false);
         this.findDialogViews(v);

@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.learn_alphabet.R;
-import com.learn_alphabet.activities.QuizActivity;
+import com.learn_alphabet.activities.quiz.QuizActivity;
 import com.learn_alphabet.activities.quiz.utils.QuizQuestionHandler;
 
 public class TimeCompleteDialog implements View.OnClickListener {
@@ -37,7 +37,7 @@ public class TimeCompleteDialog implements View.OnClickListener {
     }
 
     private  void buildDialog(){
-        View v=inflater.inflate(R.layout.time_complete_dialog,null,false);
+        View v=inflater.inflate(R.layout.dialog_time_complete,null,false);
         dialog.setContentView(v);
         dialog.setCancelable(false);
         this.findDialogViews(v);

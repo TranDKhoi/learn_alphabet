@@ -15,15 +15,13 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.learn_alphabet.R;
-import com.learn_alphabet.activities.learn_speak.LearnActivity;
-import com.learn_alphabet.activities.learn_speak.LearnResourceSet;
+import com.learn_alphabet.activities.drawingboard.DrawBoardActivity;
+import com.learn_alphabet.activities.quiz.QuizActivity;
 import com.learn_alphabet.activities.quiz.javafiles.GameCompleteDialog;
-import com.learn_alphabet.activities.drawingboard.activity.DrawBoardActivity;
 import com.learn_alphabet.activities.quiz.utils.QuizQuestionHandler;
 import com.learn_alphabet.adapter.LearnAdapter;
 import com.learn_alphabet.databinding.ActivityMainBinding;
@@ -97,16 +95,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 // startActivity(drawingNumberId);
                 // playerr.pause();
             } else if (id == R.id.drawBtn) {
-                 requestPermissionWrite();
-                 Intent GoToDrawing = new Intent(this, DrawBoardActivity.class);
-                 startActivity(GoToDrawing);
+                requestPermissionWrite();
+                Intent GoToDrawing = new Intent(this, DrawBoardActivity.class);
+                startActivity(GoToDrawing);
             } else if (id == R.id.quizBtn) {
-                 Intent i = new Intent(this, QuizActivity.class);
-                 QuizQuestionHandler.populateList();
-                 QuizActivity.timer = 200;
-                 QuizActivity.QUESTION_LIMIT = 45;
-                 GameCompleteDialog.Score = 30;
-                 startActivity(i);
+                Intent i = new Intent(this, QuizActivity.class);
+                QuizQuestionHandler.populateList();
+                QuizActivity.timer = 200;
+                QuizActivity.QUESTION_LIMIT = 45;
+                GameCompleteDialog.Score = 30;
+                startActivity(i);
             } else {
                 if (id == R.id.btnmusic) {
                     if (playerr.isPlaying()) {

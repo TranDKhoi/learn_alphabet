@@ -70,6 +70,5 @@ public class QuizQuestionHandler {
 		questionSet.add(new QuestionSet(R.drawable.quiz_three,"THREE",55, R.raw.a3));
 		questionSet.add(new QuestionSet(R.drawable.quiz_triangle,"TRIANGLE",56, R.raw.triangle));
 		questionSet.add(new QuestionSet(R.drawable.quiz_two,"TWO",57, R.raw.a2));
-
 	}
 }

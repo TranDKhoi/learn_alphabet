@@ -24,7 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Learn_alphabet">
         <activity
-            android:name=".activities.QuizActivity"
+            android:name=".activities.quiz.QuizActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
@@ -41,7 +41,7 @@
             android:name=".activities.learn_speak.LearnActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".activities.drawingboard.activity.DrawBoardActivity"
+            android:name=".activities.drawingboard.DrawBoardActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:screenOrientation="landscape" />
     </application>
