@@ -475,7 +475,6 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
 
     public void onAddLodded() {
         //mInterstitialAd.loadAd(new AdRequest.Builder().build());
-
     }
 
     public void adShow() {
@@ -483,7 +482,6 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
         AdsController.adCount = AdsController.adCount + 1;
         if(AdsController.adCount % AdsController.adShow == 0) {
             // Show the ad if it's ready. Otherwise toast and restart the game.
-
         }
 
     }
