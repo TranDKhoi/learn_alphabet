@@ -78,24 +78,19 @@ public class GameCompleteDialog  implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_score_cancel:
-                this.dialog.dismiss();
-                act.finish();
-                break;
-            case R.id.btn_score_retry:
-                act.startActivity(new Intent(act, QuizActivity.class));
-                Intent i = new Intent(act,QuizActivity.class);
-                QuizQuestionHandler.populateList();
-                QuizActivity.timer = 200;
-                QuizActivity.QUESTION_LIMIT = 45;
-                GameCompleteDialog.Score = 30;
-                act.startActivity(i);
-                this.dialog.dismiss();
-                act.finish();
-                break;
-            default:
-                break;
+        if (v.getId() == R.id.btn_score_cancel) {
+            this.dialog.dismiss();
+            act.finish();
+        } else if (v.getId() == R.id.btn_score_retry) {
+            act.startActivity(new Intent(act, QuizActivity.class));
+            Intent i = new Intent(act,QuizActivity.class);
+            QuizQuestionHandler.populateList();
+            QuizActivity.timer = 200;
+            QuizActivity.QUESTION_LIMIT = 45;
+            GameCompleteDialog.Score = 30;
+            act.startActivity(i);
+            this.dialog.dismiss();
+            act.finish();
         }
     }
 
