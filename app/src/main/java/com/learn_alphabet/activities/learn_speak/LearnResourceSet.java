@@ -27,7 +27,7 @@ public class LearnResourceSet {
                 Arrays.asList(R.raw.a1, R.raw.a2, R.raw.a3, R.raw.a4, R.raw.a5, R.raw.a6, R.raw.a7, R.raw.a8, R.raw.a9, R.raw.a10, R.raw.yahh_abc)));
         put(ICON3, Arrays.asList(Arrays.asList(R.drawable.d1, R.drawable.d2, R.drawable.d3, R.drawable.d4, R.drawable.d5, R.drawable.d6, R.drawable.d7, R.drawable.resta),
                 Arrays.asList(R.raw.d1, R.raw.d2, R.raw.d3, R.raw.d4, R.raw.d5, R.raw.d6, R.raw.d7, R.raw.yahh_abc)));
-        put(ICON4, Arrays.asList(Arrays.asList(R.drawable.m1, R.drawable.m2, R.drawable.m3, R.drawable.m4, R.drawable.m5, R.drawable.m6, R.drawable.m7, R.drawable.m8, R.drawable.sm9, R.drawable.m10, R.drawable.m11, R.drawable.m12, R.drawable.resta),
+        put(ICON4, Arrays.asList(Arrays.asList(R.drawable.s1, R.drawable.s2, R.drawable.s3, R.drawable.s4, R.drawable.s5, R.drawable.s6, R.drawable.s7, R.drawable.s8, R.drawable.s9, R.drawable.s10, R.drawable.s11, R.drawable.s12, R.drawable.resta),
                 Arrays.asList(R.raw.m1, R.raw.m2, R.raw.m3, R.raw.m4, R.raw.m5, R.raw.m6, R.raw.m7, R.raw.m8, R.raw.m9, R.raw.m10, R.raw.m11, R.raw.m12, R.raw.yahh_abc)));
         put(ICON5, Arrays.asList(Arrays.asList(R.drawable.f1, R.drawable.f2, R.drawable.f3, R.drawable.f4, R.drawable.f5, R.drawable.f6, R.drawable.f7, R.drawable.f8, R.drawable.f9, R.drawable.f10, R.drawable.f11, R.drawable.f12, R.drawable.f13, R.drawable.f14, R.drawable.f15, R.drawable.f16, R.drawable.f17, R.drawable.f18, R.drawable.f19, R.drawable.f20, R.drawable.resta),
                 Arrays.asList(R.raw.f1, R.raw.f2, R.raw.f3, R.raw.f4, R.raw.f5, R.raw.f6, R.raw.f7, R.raw.f8, R.raw.f9, R.raw.f10, R.raw.f11, R.raw.f12, R.raw.f13, R.raw.f14, R.raw.f15, R.raw.f16, R.raw.f17, R.raw.f18, R.raw.f19, R.raw.f20, R.raw.yahh_abc)));
@@ -44,10 +44,4 @@ public class LearnResourceSet {
         put(ICON11, Arrays.asList(Arrays.asList(R.drawable.airplane, R.drawable.ambulance, R.drawable.bicycle, R.drawable.bike, R.drawable.bulldozer, R.drawable.bus, R.drawable.car, R.drawable.etuk, R.drawable.firetruck, R.drawable.helicopter, R.drawable.police, R.drawable.rocket, R.drawable.scooter, R.drawable.submarine, R.drawable.tank, R.drawable.taxi, R.drawable.tractor, R.drawable.train, R.drawable.truck, R.drawable.resta),
                 Arrays.asList(R.raw.airplane, R.raw.ambulance, R.raw.bicycle, R.raw.bike, R.raw.bulldozer, R.raw.bus, R.raw.car, R.raw.etuk, R.raw.firetruck, R.raw.helicopter, R.raw.police, R.raw.rocket, R.raw.scooter, R.raw.submarine, R.raw.tank, R.raw.taxi, R.raw.tractor, R.raw.train, R.raw.truck, R.raw.yahh_abc)));
     }};
-
-    Integer[] numberStroke = new Integer[]{R.drawable.en1, R.drawable.en2, R.drawable.en3, R.drawable.en4, R.drawable.en5, R.drawable.en6, R.drawable.en7, R.drawable.en8, R.drawable.en9, R.drawable.en10, R.drawable.en11, R.drawable.en12, R.drawable.en13, R.drawable.restar2};
-    Integer[] numberSounds = new Integer[]{R.raw.a1, R.raw.a2, R.raw.a3, R.raw.a4, R.raw.a5, R.raw.a6, R.raw.a7, R.raw.a8, R.raw.a9, R.raw.a10, R.raw.a10, R.raw.a10, R.raw.a10, R.raw.yahh_abc};
-    Integer[] alphabetSound = new Integer[]{R.raw.a, R.raw.b, R.raw.c, R.raw.d, R.raw.e, R.raw.f, R.raw.g, R.raw.h, R.raw.i, R.raw.j, R.raw.k, R.raw.l, R.raw.m, R.raw.n, R.raw.o, R.raw.p, R.raw.q, R.raw.r, R.raw.s, R.raw.t, R.raw.u, R.raw.v, R.raw.w, R.raw.x, R.raw.y, R.raw.z, R.raw.yahh_abc};
-    Integer[] capitalStoke = new Integer[]{R.drawable.e1, R.drawable.e2, R.drawable.e3, R.drawable.e4, R.drawable.e5, R.drawable.e6, R.drawable.e7, R.drawable.e8, R.drawable.e9, R.drawable.e10, R.drawable.e11, R.drawable.e12, R.drawable.e13, R.drawable.e14, R.drawable.e15, R.drawable.e16, R.drawable.e17, R.drawable.e18, R.drawable.e19, R.drawable.e20, R.drawable.e21, R.drawable.e22, R.drawable.e23, R.drawable.e24, R.drawable.e25, R.drawable.e26, R.drawable.restar2};
-
 }

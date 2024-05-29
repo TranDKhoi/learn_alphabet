@@ -3,35 +3,31 @@ package com.learn_alphabet.activities;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.SystemClock;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import com.learn_alphabet.R;
+import com.learn_alphabet.activities.drawing.DrawingActivity;
+import com.learn_alphabet.activities.drawing.DrawingResourcePool;
 import com.learn_alphabet.activities.drawingboard.DrawBoardActivity;
 import com.learn_alphabet.activities.quiz.QuizActivity;
 import com.learn_alphabet.activities.quiz.javafiles.GameCompleteDialog;
 import com.learn_alphabet.activities.quiz.utils.QuizQuestionHandler;
 import com.learn_alphabet.adapter.LearnAdapter;
 import com.learn_alphabet.databinding.ActivityMainBinding;
-import com.learn_alphabet.utils.SharedPreference;
 
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
     private static final String TAG = "MainActivity";
     private AudioManager audio;
-    public static SharedPreference sharedPreference;
     private long mLastClickTime = 0;
     MediaPlayer playerr;
     public Dialog myDialog;
@@ -46,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(1);
         setContentView(root.getRoot());
-
 
         this.audio = (AudioManager) getSystemService(AUDIO_SERVICE);
         // init dialog
@@ -82,20 +77,18 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         if (elapsedTime >= 1000) {
             this.mLastClickTime = SystemClock.elapsedRealtime();
             int id = view.getId();
-            Intent intent;
 
             if (id == R.id.drawTextBtn) {
-                // Intent drawingid = new Intent(MainActivity.this, DrawingActivity.class);
-                // drawingid.putExtra("type", DrawingResourcePool.DRAWING_ALPHABET);
-                // startActivity(drawingid);
-                // playerr.pause();
+                Intent drawingid = new Intent(MainActivity.this, DrawingActivity.class);
+                drawingid.putExtra("type", DrawingResourcePool.DRAWING_ALPHABET);
+                startActivity(drawingid);
+                playerr.pause();
             } else if (id == R.id.drawNumberBtn) {
-                // Intent drawingNumberId = new Intent(MainActivity.this, DrawingActivity.class);
-                // drawingNumberId.putExtra("type", DrawingResourcePool.NUMBER);
-                // startActivity(drawingNumberId);
-                // playerr.pause();
+                Intent drawingNumberId = new Intent(MainActivity.this, DrawingActivity.class);
+                drawingNumberId.putExtra("type", DrawingResourcePool.NUMBER);
+                startActivity(drawingNumberId);
+                playerr.pause();
             } else if (id == R.id.drawBtn) {
-                requestPermissionWrite();
                 Intent GoToDrawing = new Intent(this, DrawBoardActivity.class);
                 startActivity(GoToDrawing);
             } else if (id == R.id.quizBtn) {
@@ -128,35 +121,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             }
         }
     }
-
-    ///////////////////////////////////////////////////////////////// Permission //////////////////////////////////////////////////////
-    @Override
-    public void onRequestPermissionsResult(int i, String[] strArr, int[] iArr) {
-        super.onRequestPermissionsResult(i, strArr, iArr);
-        if (i == 1001) {
-            int length = strArr.length;
-            for (int i2 = 0; i2 < length; i2++) {
-                String str = strArr[i2];
-                if (iArr[i2] == -1) {
-                    if (!shouldShowRequestPermissionRationale(str)) {
-                        sharedPreference.saveStoragePermissionNever(this, true);
-                    } else {
-                        Toast.makeText(this, getString(R.string.msg_save_picture), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-        }
-    }
-
-    public void requestPermissionWrite() {
-        if (checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == PackageManager.PERMISSION_GRANTED) {
-            Log.v("KidsPreschool", "Permission is granted");
-        } else {
-            Log.v("KidsPreschool", "Permission is revoked");
-            ActivityCompat.requestPermissions(this, new String[]{"android.permission.WRITE_EXTERNAL_STORAGE"}, 1001);
-        }
-    }
-
 
 ///////////////////////////////////////////////////////////////// //////////////////////////////////////////////////////
 
