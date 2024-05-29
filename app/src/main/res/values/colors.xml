@@ -69,7 +69,6 @@
     <color name="common_background_color">#eeeeee</color>
 
 
-
     <color name="trans_black">#35000000</color>
     <color name="off_white">#737373</color>
     <color name="trans_primary">#7522CC9F</color>
@@ -124,4 +123,8 @@
     <color name="trans">#80000000</color>
     <color name="tran">#50000000</color>
     <color name="detailsToolbar">#55000000</color>
+    <color name="light_blue_400">#FF29B6F6</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="gray_400">#FFBDBDBD</color>
+    <color name="gray_600">#FF757575</color>
 </resources>

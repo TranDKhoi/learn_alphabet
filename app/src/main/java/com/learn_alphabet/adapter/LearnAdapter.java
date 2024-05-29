@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.learn_alphabet.R;
 import com.learn_alphabet.activities.learn_speak.LearnActivity;
 import com.learn_alphabet.activities.learn_speak.LearnResourceSet;
-import com.learn_alphabet.models.LearnModel;
+import com.learn_alphabet.activities.learn_speak.models.LearnModel;
 
 import java.util.ArrayList;
 
