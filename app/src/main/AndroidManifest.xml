@@ -45,6 +45,15 @@
             android:name=".activities.quiz.QuizActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
+        <activity
+            android:name=".activities.text_quiz.TextQuizActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.text_quiz.ResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.text_quiz.WonActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

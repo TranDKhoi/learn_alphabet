@@ -19,6 +19,7 @@
     <color name="Text">#5587d1</color>
     <color name="Text2">#FFF7D7</color>
     <color name="Text3">#b7353f</color>
+    <color name="TextColor">#253481</color>
 
     <color name="header_color">#f5fbff</color>
     <color name="game_score_bg">#B3CB3F</color>
@@ -58,6 +59,7 @@
     <color name="bottom_bg_view_topbar">#FFF200</color>
     <color name="backgroundColor">#E8E8E0</color>
     <color name="backgroundColorPress">#DBDBD3</color>
+    <color name="animalDialogColorbg">#253481</color>
 
     <color name="red_press">#990000</color>
     <color name="dark_gray">#4C535B</color>
@@ -97,15 +99,6 @@
     <color name="color_grey">#9e9e9e</color>
     <color name="color_blue_grey">#607d8b</color>
 
-
-    <!--Common colors-->
-    <color name="colorAccentSecondary">#ad1a7f</color>
-    <color name="viewBg">#f8f8f8</color>
-    <color name="btn_disabled">#999</color>
-    <color name="lbl_value">#222222</color>
-    <color name="bg_splash">#FFFFFF</color>
-    <color name="page_bg">#F7F5F6</color>
-    <color name="page_bg_dim">#FAFAFA</color>
 
     <color name="transparent_black">#99000000</color>
     <color name="transparent_white">#AAFFFFFF</color>

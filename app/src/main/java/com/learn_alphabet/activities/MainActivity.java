@@ -21,6 +21,7 @@ import com.learn_alphabet.activities.drawingboard.DrawBoardActivity;
 import com.learn_alphabet.activities.quiz.QuizActivity;
 import com.learn_alphabet.activities.quiz.javafiles.GameCompleteDialog;
 import com.learn_alphabet.activities.quiz.utils.QuizQuestionHandler;
+import com.learn_alphabet.activities.text_quiz.TextQuizActivity;
 import com.learn_alphabet.adapter.LearnAdapter;
 import com.learn_alphabet.databinding.ActivityMainBinding;
 
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     private long mLastClickTime = 0;
     MediaPlayer playerr;
     public Dialog myDialog;
-    private String musicStatus;
     private LearnAdapter learnAdapter;
     ActivityMainBinding root;
 
@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         root.quizBtn.setOnClickListener(this);
         root.drawTextBtn.setOnClickListener(this);
         root.drawNumberBtn.setOnClickListener(this);
+        root.textQuizBtn.setOnClickListener(this);
+        root.listenBtn.setOnClickListener(this);
     }
 
 
@@ -79,14 +81,23 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             int id = view.getId();
 
             if (id == R.id.drawTextBtn) {
-                Intent drawingid = new Intent(MainActivity.this, DrawingActivity.class);
+                Intent drawingid = new Intent(this, DrawingActivity.class);
                 drawingid.putExtra("type", DrawingResourcePool.DRAWING_ALPHABET);
                 startActivity(drawingid);
                 playerr.pause();
             } else if (id == R.id.drawNumberBtn) {
-                Intent drawingNumberId = new Intent(MainActivity.this, DrawingActivity.class);
+                Intent drawingNumberId = new Intent(this, DrawingActivity.class);
                 drawingNumberId.putExtra("type", DrawingResourcePool.NUMBER);
                 startActivity(drawingNumberId);
+                playerr.pause();
+            } else if (id == R.id.listenBtn) {
+//                Intent drawingNumberId = new Intent(this, DrawingActivity.class);
+//                drawingNumberId.putExtra("type", DrawingResourcePool.NUMBER);
+//                startActivity(drawingNumberId);
+                playerr.pause();
+            } else if (id == R.id.textQuizBtn) {
+                Intent textQuizIntent = new Intent(this, TextQuizActivity.class);
+                startActivity(textQuizIntent);
                 playerr.pause();
             } else if (id == R.id.drawBtn) {
                 Intent GoToDrawing = new Intent(this, DrawBoardActivity.class);

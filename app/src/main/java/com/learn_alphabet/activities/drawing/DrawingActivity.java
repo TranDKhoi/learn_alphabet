@@ -172,6 +172,7 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
         this.prevBtn.setOnTouchListener(this);
         this.playBtn.setOnClickListener(this);
         this.playBtn.setOnTouchListener(this);
+        root.imgBack.setOnClickListener(this);
         this.itemImage = findViewById(R.id.itemImageId);
         this.drawingView = findViewById(R.id.drawingViewId);
         this.playerr = MediaPlayer.create(this, R.raw.intro_01);
@@ -241,23 +242,22 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
 
     public void onClick(View view) {
         int id = view.getId();
-        if (id != R.id.nextId) {
-            if (id == R.id.playId) {
-                changeStroke();
-                return;
-            } else if (id == R.id.prevId) {
-                this.position = this.position - 1;
-                this.mediaPlayer.stop();
-                changeStroke();
-                gotoPrevious();
-                return;
-            }
-            return;
+        if (id == R.id.playId) {
+            changeStroke();
+        } else if (id == R.id.prevId) {
+            this.position = this.position - 1;
+            this.mediaPlayer.stop();
+            changeStroke();
+            gotoPrevious();
+        } else if (id == R.id.nextId) {
+            this.position = this.position + 1;
+            this.mediaPlayer.stop();
+            changeStroke();
+            gotoNext();
+        } else if (id == R.id.imgBack) {
+            exitByBackKey();
         }
-        this.position = this.position + 1;
-        this.mediaPlayer.stop();
-        changeStroke();
-        gotoNext();
+
     }
 
     private void changeStroke() {
@@ -322,7 +322,7 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
             root.imgBack.setClickable(true);
             root.imgBack.setVisibility(View.VISIBLE);
             return;
-        }   
+        }
         this.nextBtn.setAlpha(1.0f);
         this.nextBtn.setClickable(true);
         root.imgBack.setClickable(false);
@@ -359,9 +359,11 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
     }
 
     public void exitByBackKey() {
-        this.mediaPlayer.stop();
-        this.mediaPlayer.release();
-        this.mediaPlayer = null;
+        if (mediaPlayer != null) {
+            this.mediaPlayer.stop();
+            this.mediaPlayer.release();
+            this.mediaPlayer = null;
+        }
         this.playerr.stop();
         this.playerr.release();
         this.playerr = null;
