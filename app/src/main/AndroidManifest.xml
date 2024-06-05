@@ -54,6 +54,12 @@
         <activity
             android:name=".activities.text_quiz.WonActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.animal_sound.AnimalSoundActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.animal_sound.AnimalSoundDetailsActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

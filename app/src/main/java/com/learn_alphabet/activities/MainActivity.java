@@ -3,7 +3,6 @@ package com.learn_alphabet.activities;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.PowerManager;
@@ -15,6 +14,7 @@ import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.learn_alphabet.R;
+import com.learn_alphabet.activities.animal_sound.AnimalSoundActivity;
 import com.learn_alphabet.activities.drawing.DrawingActivity;
 import com.learn_alphabet.activities.drawing.DrawingResourcePool;
 import com.learn_alphabet.activities.drawingboard.DrawBoardActivity;
@@ -27,12 +27,9 @@ import com.learn_alphabet.databinding.ActivityMainBinding;
 
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
-    private static final String TAG = "MainActivity";
-    private AudioManager audio;
     private long mLastClickTime = 0;
-    MediaPlayer playerr;
+    MediaPlayer player;
     public Dialog myDialog;
-    private LearnAdapter learnAdapter;
     ActivityMainBinding root;
 
     @Override
@@ -43,19 +40,18 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         requestWindowFeature(1);
         setContentView(root.getRoot());
 
-        this.audio = (AudioManager) getSystemService(AUDIO_SERVICE);
         // init dialog
         myDialog = new Dialog(this);
 
-        this.playerr = MediaPlayer.create(this, R.raw.intro_01);
-        this.playerr.start();
-        this.playerr.setLooping(true);
+        this.player = MediaPlayer.create(this, R.raw.intro_01);
+        this.player.start();
+        this.player.setLooping(true);
 
 
         QuizQuestionHandler.populateList();
 
 
-        learnAdapter = new LearnAdapter(this);
+        LearnAdapter learnAdapter = new LearnAdapter(this);
         root.rcv.setAdapter(learnAdapter);
 
         root.btnmusic.setOnClickListener(this);
@@ -81,24 +77,23 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             int id = view.getId();
 
             if (id == R.id.drawTextBtn) {
-                Intent drawingid = new Intent(this, DrawingActivity.class);
-                drawingid.putExtra("type", DrawingResourcePool.DRAWING_ALPHABET);
-                startActivity(drawingid);
-                playerr.pause();
+                Intent drawingId = new Intent(this, DrawingActivity.class);
+                drawingId.putExtra("type", DrawingResourcePool.DRAWING_ALPHABET);
+                startActivity(drawingId);
+                player.pause();
             } else if (id == R.id.drawNumberBtn) {
                 Intent drawingNumberId = new Intent(this, DrawingActivity.class);
                 drawingNumberId.putExtra("type", DrawingResourcePool.NUMBER);
                 startActivity(drawingNumberId);
-                playerr.pause();
+                player.pause();
             } else if (id == R.id.listenBtn) {
-//                Intent drawingNumberId = new Intent(this, DrawingActivity.class);
-//                drawingNumberId.putExtra("type", DrawingResourcePool.NUMBER);
-//                startActivity(drawingNumberId);
-                playerr.pause();
+                Intent animalSoundIntent = new Intent(this, AnimalSoundActivity.class);
+                startActivity(animalSoundIntent);
+                player.pause();
             } else if (id == R.id.textQuizBtn) {
                 Intent textQuizIntent = new Intent(this, TextQuizActivity.class);
                 startActivity(textQuizIntent);
-                playerr.pause();
+                player.pause();
             } else if (id == R.id.drawBtn) {
                 Intent GoToDrawing = new Intent(this, DrawBoardActivity.class);
                 startActivity(GoToDrawing);
@@ -111,12 +106,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 startActivity(i);
             } else {
                 if (id == R.id.btnmusic) {
-                    if (playerr.isPlaying()) {
-                        this.playerr.pause();
+                    if (player.isPlaying()) {
+                        this.player.pause();
                         root.btnmusic.setImageResource(R.drawable.music_off);
                     } else {
-                        this.playerr.start();
-                        this.playerr.setLooping(true);
+                        this.player.start();
+                        this.player.setLooping(true);
                         root.btnmusic.setImageResource(R.drawable.music_on);
                     }
                 } else if (id == R.id.btn_privacy) {
@@ -137,14 +132,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
 
     protected void onUserLeaveHint() {
-        this.playerr.pause();
+        this.player.pause();
         super.onUserLeaveHint();
     }
 
     protected void onPause() {
         super.onPause();
         if (!((PowerManager) getSystemService(POWER_SERVICE)).isScreenOn()) {
-            this.playerr.pause();
+            this.player.pause();
         }
     }
 ////////////////////////////////////////////////////// Exit Dialog ////////////////////////////////////////
