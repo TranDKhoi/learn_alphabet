@@ -14,7 +14,6 @@ import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.Path.Direction;
 import android.graphics.Rect;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.PowerManager;
@@ -23,21 +22,22 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
 
 import com.learn_alphabet.R;
+import com.learn_alphabet.databinding.ActivityDrawingBinding;
 
 
 public class DrawingActivity extends AppCompatActivity implements OnClickListener, OnTouchListener {
     private int currentPosition = 0;
     View drawingView = null;
     DrawingView dv;
-    ImageView imghomeee;
     ImageView itemImage = null;
     private Paint mPaint;
     private MediaPlayer mediaPlayer = null;
@@ -49,7 +49,8 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
     private Integer position = 0;
     ImageView prevBtn = null;
     private int totalItem = 0;
-    private String type = "";
+    private String drawType = "";
+    ActivityDrawingBinding root;
 
     public class DrawingView extends View {
         private static final float TOUCH_TOLERANCE = 4.0f;
@@ -78,13 +79,13 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
             super.onSizeChanged(i, i2, i3, i4);
             this.mBitmap = Bitmap.createBitmap(i, i2, Config.ARGB_8888);
             this.mCanvas = new Canvas(this.mBitmap);
-            if (type.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
+            if (drawType.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
                 this.bm = BitmapFactory.decodeResource(getResources(), DrawingResourcePool.capitalStoke[position]);
             } else {
                 this.bm = BitmapFactory.decodeResource(getResources(), DrawingResourcePool.numberStroke[position]);
             }
             this.mCanvas.drawBitmap(this.bm, new Rect(0, 0, this.bm.getWidth(), this.bm.getHeight()), new Rect(0, 0, this.mCanvas.getWidth(), this.mCanvas.getHeight()), this.mBitmapPaint);
-            if (type.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
+            if (drawType.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
                 totalItem = DrawingResourcePool.capitalStoke.length;
                 itemImage.setImageResource(DrawingResourcePool.capitalStoke[currentPosition]);
                 return;
@@ -157,12 +158,11 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(1);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_drawing);
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
+        root = ActivityDrawingBinding.inflate(getLayoutInflater());
+        setContentView(root.getRoot());
 
-        AudioManager audio = (AudioManager) getSystemService(AUDIO_SERVICE);
-        this.type = getIntent().getStringExtra("type");
+        this.drawType = getIntent().getStringExtra("type");
         this.nextBtn = findViewById(R.id.nextId);
         this.playBtn = findViewById(R.id.playId);
         this.prevBtn = findViewById(R.id.prevId);
@@ -184,7 +184,7 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
         int indexOfChild = this.parent.indexOfChild(this.drawingView);
         this.parent.removeView(this.drawingView);
         this.parent.addView(this.dv, indexOfChild);
-        if (this.type.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
+        if (this.drawType.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
             this.totalItem = DrawingResourcePool.capitalStoke.length;
         } else {
             this.totalItem = DrawingResourcePool.numberStroke.length;
@@ -198,20 +198,27 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
         this.mPaint.setStrokeCap(Cap.ROUND);
         this.mPaint.setStrokeWidth(150.0f);
         updatePreviousButton();
-        if (this.type.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
+        if (this.drawType.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
             this.mediaPlayer = MediaPlayer.create(this, DrawingResourcePool.alphabetSound[this.currentPosition]);
             this.mediaPlayer.start();
         } else {
             this.mediaPlayer = MediaPlayer.create(this, DrawingResourcePool.numberSounds[this.currentPosition]);
             this.mediaPlayer.start();
         }
-        if (this.type.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
+        if (this.drawType.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
             this.totalItem = DrawingResourcePool.capitalStoke.length;
             this.itemImage.setImageResource(DrawingResourcePool.capitalStoke[this.currentPosition]);
             return;
         }
         this.totalItem = DrawingResourcePool.numberStroke.length;
         this.itemImage.setImageResource(DrawingResourcePool.numberStroke[this.currentPosition]);
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                exitByBackKey();
+            }
+        });
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -270,7 +277,7 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
         updateNextButton();
         updatePreviousButton();
         if (this.currentPosition >= 0 && this.currentPosition < this.totalItem) {
-            if (this.type.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
+            if (this.drawType.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
                 this.mediaPlayer.stop();
                 this.mediaPlayer.release();
                 this.mediaPlayer = null;
@@ -292,7 +299,7 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
         updateNextButton();
         updatePreviousButton();
         if (currentPosition >= 0 && currentPosition < totalItem) {
-            if (type.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
+            if (drawType.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
                 mediaPlayer.stop();
                 mediaPlayer.release();
                 mediaPlayer = null;
@@ -312,14 +319,14 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
         if (this.position == this.totalItem - 1) {
             this.nextBtn.setAlpha(0.5f);
             this.nextBtn.setClickable(false);
-            this.imghomeee.setClickable(true);
-            this.imghomeee.setVisibility(View.VISIBLE);
+            root.imgBack.setClickable(true);
+            root.imgBack.setVisibility(View.VISIBLE);
             return;
-        }
+        }   
         this.nextBtn.setAlpha(1.0f);
         this.nextBtn.setClickable(true);
-        this.imghomeee.setClickable(false);
-        this.imghomeee.setVisibility(View.INVISIBLE);
+        root.imgBack.setClickable(false);
+        root.imgBack.setVisibility(View.INVISIBLE);
     }
 
     private void updatePreviousButton() {
@@ -332,11 +339,6 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
         this.prevBtn.setClickable(true);
     }
 
-    public void onBackPressed() {
-        super.onBackPressed();
-        exitByBackKey();
-    }
-
     protected void onUserLeaveHint() {
         this.playerr.pause();
         this.mediaPlayer.stop();
@@ -345,7 +347,7 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
 
     protected void onPause() {
         super.onPause();
-        if (!((PowerManager) getSystemService(POWER_SERVICE)).isScreenOn()) {
+        if (!((PowerManager) getSystemService(POWER_SERVICE)).isInteractive()) {
             this.playerr.pause();
             this.mediaPlayer.stop();
         }
