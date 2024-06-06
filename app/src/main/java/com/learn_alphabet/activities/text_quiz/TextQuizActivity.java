@@ -2,7 +2,6 @@ package com.learn_alphabet.activities.text_quiz;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -45,8 +44,6 @@ public class TextQuizActivity extends Activity implements View.OnTouchListener, 
     TextView times;
     int width;
     int qid = 0;
-    private float originalX = 0.0f;
-    private float originalY = 0.0f;
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -62,12 +59,7 @@ public class TextQuizActivity extends Activity implements View.OnTouchListener, 
         ImageView imageView = (ImageView) findViewById(R.id.backToMain);
         this.backToMain = imageView;
         imageView.setImageResource(R.drawable.ic_baseline_arrow_back_24);
-        this.backToMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TextQuizActivity.this.finish();
-            }
-        });
+        this.backToMain.setOnClickListener(view -> TextQuizActivity.this.finish());
         this.scored = (TextView) findViewById(R.id.score);
         score = 0;
         hearts = 5;
@@ -199,8 +191,6 @@ public class TextQuizActivity extends Activity implements View.OnTouchListener, 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         if (motionEvent.getAction() == 0) {
-            this.originalX = motionEvent.getX();
-            this.originalY = motionEvent.getY();
             view.getId();
             view.startDrag(null, new View.DragShadowBuilder(view), view, 0);
             return true;
@@ -265,12 +255,7 @@ public class TextQuizActivity extends Activity implements View.OnTouchListener, 
                 getAnswer("win");
             }
         } else if (action == 4) {
-            view2.post(new Runnable() {
-                @Override
-                public void run() {
-                    view2.setVisibility(View.VISIBLE);
-                }
-            });
+            view2.post(() -> view2.setVisibility(View.VISIBLE));
         } else if (action == 5) {
             Log.d("perfect_position_array", "arr: " + Arrays.toString(this.perfect_position_array));
             Log.d("perfect_position_array", "arr: " + view.getId() + "");

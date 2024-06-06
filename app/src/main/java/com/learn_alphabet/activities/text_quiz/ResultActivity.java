@@ -31,6 +31,7 @@ public class ResultActivity extends Activity {
             @Override
             public void onClick(View view) {
                 ResultActivity.this.startActivity(new Intent(ResultActivity.this, TextQuizActivity.class));
+                finish();
             }
         });
     }

@@ -22,13 +22,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.WindowCompat;
 
 import com.learn_alphabet.R;
 import com.learn_alphabet.databinding.ActivityDrawingBinding;
@@ -158,7 +158,8 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
+        requestWindowFeature(1);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         root = ActivityDrawingBinding.inflate(getLayoutInflater());
         setContentView(root.getRoot());
 
