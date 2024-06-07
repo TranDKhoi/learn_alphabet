@@ -97,14 +97,11 @@ public class AnimalSoundDetailsActivity extends AppCompatActivity {
 
     private void SetupToolbar() {
         String stringExtra = getIntent().getStringExtra("category");
-        String stringExtra3 = getIntent().getStringExtra("desc_eng");
         Toolbar mToolbar = findViewById(R.id.main_mainpage_toolbar);
         TextView textView = findViewById(R.id.Titlebar);
         textView.setText(stringExtra);
-        TextView titlebarDescription = findViewById(R.id.TitlebarDescription);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        titlebarDescription.setText(stringExtra3);
     }
 
     @Override
