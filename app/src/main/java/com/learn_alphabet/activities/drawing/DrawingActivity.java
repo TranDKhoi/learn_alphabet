@@ -23,7 +23,6 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 
 import androidx.activity.OnBackPressedCallback;
@@ -36,18 +35,13 @@ import com.learn_alphabet.databinding.ActivityDrawingBinding;
 
 public class DrawingActivity extends AppCompatActivity implements OnClickListener, OnTouchListener {
     private int currentPosition = 0;
-    View drawingView = null;
     DrawingView dv;
-    ImageView itemImage = null;
     private Paint mPaint;
     private MediaPlayer mediaPlayer = null;
-    ImageView nextBtn = null;
     LayoutParams params = null;
     ViewGroup parent = null;
-    ImageView playBtn = null;
-    MediaPlayer playerr;
+    MediaPlayer player;
     private Integer position = 0;
-    ImageView prevBtn = null;
     private int totalItem = 0;
     private String drawType = "";
     ActivityDrawingBinding root;
@@ -87,11 +81,11 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
             this.mCanvas.drawBitmap(this.bm, new Rect(0, 0, this.bm.getWidth(), this.bm.getHeight()), new Rect(0, 0, this.mCanvas.getWidth(), this.mCanvas.getHeight()), this.mBitmapPaint);
             if (drawType.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
                 totalItem = DrawingResourcePool.capitalStoke.length;
-                itemImage.setImageResource(DrawingResourcePool.capitalStoke[currentPosition]);
+                root.itemImageId.setImageResource(DrawingResourcePool.capitalStoke[currentPosition]);
                 return;
             }
             totalItem = DrawingResourcePool.numberStroke.length;
-            itemImage.setImageResource(DrawingResourcePool.numberStroke[currentPosition]);
+            root.itemImageId.setImageResource(DrawingResourcePool.numberStroke[currentPosition]);
         }
 
         protected void onDraw(@NonNull Canvas canvas) {
@@ -164,33 +158,24 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
         setContentView(root.getRoot());
 
         this.drawType = getIntent().getStringExtra("type");
-        this.nextBtn = findViewById(R.id.nextId);
-        this.playBtn = findViewById(R.id.playId);
-        this.prevBtn = findViewById(R.id.prevId);
-        this.nextBtn.setOnClickListener(this);
-        this.nextBtn.setOnTouchListener(this);
-        this.prevBtn.setOnClickListener(this);
-        this.prevBtn.setOnTouchListener(this);
-        this.playBtn.setOnClickListener(this);
-        this.playBtn.setOnTouchListener(this);
+        root.nextId.setOnTouchListener(this);
+        root.nextId.setOnClickListener(this);
+        root.prevId.setOnClickListener(this);
+        root.prevId.setOnTouchListener(this);
+        root.playId.setOnClickListener(this);
+        root.playId.setOnTouchListener(this);
         root.imgBack.setOnClickListener(this);
-        this.itemImage = findViewById(R.id.itemImageId);
-        this.drawingView = findViewById(R.id.drawingViewId);
-        this.playerr = MediaPlayer.create(this, R.raw.intro_01);
-        this.playerr.start();
-        this.playerr.setLooping(true);
-        this.params = (LayoutParams) this.drawingView.getLayoutParams();
+        this.player = MediaPlayer.create(this, R.raw.intro_01);
+        this.player.start();
+        this.player.setLooping(true);
+        this.params = (LayoutParams) root.drawingViewId.getLayoutParams();
         this.dv = new DrawingView(this);
         this.dv.setLayoutParams(this.params);
-        this.parent = (ViewGroup) this.drawingView.getParent();
-        int indexOfChild = this.parent.indexOfChild(this.drawingView);
-        this.parent.removeView(this.drawingView);
+        this.parent = (ViewGroup) root.drawingViewId.getParent();
+        int indexOfChild = this.parent.indexOfChild(root.drawingViewId);
+        this.parent.removeView(root.drawingViewId);
         this.parent.addView(this.dv, indexOfChild);
-        if (this.drawType.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
-            this.totalItem = DrawingResourcePool.capitalStoke.length;
-        } else {
-            this.totalItem = DrawingResourcePool.numberStroke.length;
-        }
+        this.totalItem = this.drawType.equals(DrawingResourcePool.DRAWING_ALPHABET) ? DrawingResourcePool.capitalStoke.length : DrawingResourcePool.numberStroke.length;
         this.mPaint = new Paint();
         this.mPaint.setAntiAlias(true);
         this.mPaint.setDither(true);
@@ -209,11 +194,11 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
         }
         if (this.drawType.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
             this.totalItem = DrawingResourcePool.capitalStoke.length;
-            this.itemImage.setImageResource(DrawingResourcePool.capitalStoke[this.currentPosition]);
+            root.itemImageId.setImageResource(DrawingResourcePool.capitalStoke[this.currentPosition]);
             return;
         }
         this.totalItem = DrawingResourcePool.numberStroke.length;
-        this.itemImage.setImageResource(DrawingResourcePool.numberStroke[this.currentPosition]);
+        root.itemImageId.setImageResource(DrawingResourcePool.numberStroke[this.currentPosition]);
 
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
@@ -278,70 +263,55 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
         updateNextButton();
         updatePreviousButton();
         if (this.currentPosition >= 0 && this.currentPosition < this.totalItem) {
-            if (this.drawType.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
-                this.mediaPlayer.stop();
-                this.mediaPlayer.release();
-                this.mediaPlayer = null;
-                this.mediaPlayer = MediaPlayer.create(this, DrawingResourcePool.alphabetSound[this.currentPosition]);
-                this.mediaPlayer.start();
-                return;
-            }
             this.mediaPlayer.stop();
             this.mediaPlayer.release();
             this.mediaPlayer = null;
-            this.mediaPlayer = MediaPlayer.create(this, DrawingResourcePool.numberSounds[this.currentPosition]);
+            mediaPlayer = MediaPlayer.create(DrawingActivity.this,
+                    drawType.equals(DrawingResourcePool.DRAWING_ALPHABET)
+                            ? DrawingResourcePool.alphabetSound[currentPosition]
+                            : DrawingResourcePool.numberSounds[currentPosition]);
             this.mediaPlayer.start();
         }
     }
 
     private void gotoPrevious() {
-
         currentPosition--;
         updateNextButton();
         updatePreviousButton();
         if (currentPosition >= 0 && currentPosition < totalItem) {
-            if (drawType.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
-                mediaPlayer.stop();
-                mediaPlayer.release();
-                mediaPlayer = null;
-                mediaPlayer = MediaPlayer.create(DrawingActivity.this, DrawingResourcePool.alphabetSound[currentPosition]);
-                mediaPlayer.start();
-                return;
-            }
             mediaPlayer.stop();
             mediaPlayer.release();
             mediaPlayer = null;
-            mediaPlayer = MediaPlayer.create(DrawingActivity.this, DrawingResourcePool.numberSounds[currentPosition]);
+            mediaPlayer = MediaPlayer.create(DrawingActivity.this,
+                    drawType.equals(DrawingResourcePool.DRAWING_ALPHABET)
+                            ? DrawingResourcePool.alphabetSound[currentPosition]
+                            : DrawingResourcePool.numberSounds[currentPosition]);
             mediaPlayer.start();
         }
     }
 
     private void updateNextButton() {
         if (this.position == this.totalItem - 1) {
-            this.nextBtn.setAlpha(0.5f);
-            this.nextBtn.setClickable(false);
-            root.imgBack.setClickable(true);
-            root.imgBack.setVisibility(View.VISIBLE);
+            root.nextId.setAlpha(0.5f);
+            root.nextId.setClickable(false);
             return;
         }
-        this.nextBtn.setAlpha(1.0f);
-        this.nextBtn.setClickable(true);
-        root.imgBack.setClickable(false);
-        root.imgBack.setVisibility(View.INVISIBLE);
+        root.nextId.setAlpha(1.0f);
+        root.nextId.setClickable(true);
     }
 
     private void updatePreviousButton() {
         if (this.position == 0) {
-            this.prevBtn.setAlpha(0.5f);
-            this.prevBtn.setClickable(false);
+            root.prevId.setAlpha(0.5f);
+            root.prevId.setClickable(false);
             return;
         }
-        this.prevBtn.setAlpha(1.0f);
-        this.prevBtn.setClickable(true);
+        root.prevId.setAlpha(1.0f);
+        root.prevId.setClickable(true);
     }
 
     protected void onUserLeaveHint() {
-        this.playerr.pause();
+        this.player.pause();
         this.mediaPlayer.stop();
         super.onUserLeaveHint();
     }
@@ -349,14 +319,14 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
     protected void onPause() {
         super.onPause();
         if (!((PowerManager) getSystemService(POWER_SERVICE)).isInteractive()) {
-            this.playerr.pause();
+            this.player.pause();
             this.mediaPlayer.stop();
         }
     }
 
     public void onRestart() {
         super.onRestart();
-        this.playerr.start();
+        this.player.start();
     }
 
     public void exitByBackKey() {
@@ -365,9 +335,9 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
             this.mediaPlayer.release();
             this.mediaPlayer = null;
         }
-        this.playerr.stop();
-        this.playerr.release();
-        this.playerr = null;
+        this.player.stop();
+        this.player.release();
+        this.player = null;
         finish();
     }
 }

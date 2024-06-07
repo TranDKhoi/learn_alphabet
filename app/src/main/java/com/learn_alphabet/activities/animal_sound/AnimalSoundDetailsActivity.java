@@ -4,11 +4,13 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
@@ -101,7 +103,14 @@ public class AnimalSoundDetailsActivity extends AppCompatActivity {
         textView.setText(stringExtra);
         TextView titlebarDescription = findViewById(R.id.TitlebarDescription);
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         titlebarDescription.setText(stringExtra3);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        onBackPressed();
+        return super.onOptionsItemSelected(item);
     }
 
     private void EditPgView() {
@@ -179,17 +188,5 @@ public class AnimalSoundDetailsActivity extends AppCompatActivity {
             this.songPlayer.stop();
         }
         finish();
-    }
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
-    }
-
-
-    @Override
-    public void onResume() {
-        super.onResume();
     }
 }
