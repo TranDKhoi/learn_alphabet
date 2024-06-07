@@ -39,7 +39,6 @@ public class TextQuizActivity extends Activity implements View.OnTouchListener, 
     ImageView imgQuestion;
     String[] perfect_position_array;
     LinearLayout placeholder_linearLayout;
-    String[] quesList;
     TextView scored;
     TextView times;
     int width;
@@ -52,7 +51,6 @@ public class TextQuizActivity extends Activity implements View.OnTouchListener, 
 
         this.displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(this.displayMetrics);
-        this.quesList = Constant.imageQuestions;
         this.currentQ = Constant.imageQuestions[this.qid];
         this.currentA = Constant.questionsAnswers[this.qid];
         this.imgQuestion = (ImageView) findViewById(R.id.imgQuestion);

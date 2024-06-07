@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:id="@+id/won"
-    android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <ImageView
         android:layout_width="match_parent"
@@ -13,30 +12,30 @@
         android:src="@drawable/win" />
 
     <TextView
-        android:textSize="30sp"
-        android:textColor="@color/TextColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginBottom="20dp"
         android:text="You have won"
         android:textAlignment="center"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp" />
+        android:textColor="@color/TextColor"
+        android:textSize="30sp" />
 
     <TextView
-        android:textSize="25sp"
-        android:textColor="@color/TextColor"
         android:id="@+id/congo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="25dp"
         android:text="SCORE"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="@color/TextColor"
+        android:textSize="25sp" />
 
     <RelativeLayout
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card1"
@@ -47,15 +46,15 @@
             app:cardUseCompatPadding="true">
 
             <Button
-                android:textSize="22sp"
-                android:textColor="@color/white"
                 android:id="@+id/btnHome"
-                android:background="@color/animalDialogColorbg"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Play"
                 android:layout_weight="1"
-                android:textAlignment="center" />
+                android:background="@color/animalDialogColorbg"
+                android:text="Exit"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -67,23 +66,22 @@
             app:cardUseCompatPadding="true">
 
             <Button
-                android:textSize="22dp"
-                android:textColor="@color/white"
                 android:id="@+id/btnPlayAgain"
-                android:background="@color/animalDialogColorbg"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Retry"
-                android:layout_weight="1"
                 android:layout_below="@+id/btnHome"
-                android:textAlignment="center" />
+                android:layout_weight="1"
+                android:background="@color/animalDialogColorbg"
+                android:text="Retry"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="22dp" />
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
 
     <FrameLayout
-        android:gravity="center"
-        android:id="@+id/adView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:gravity="center" />
 </LinearLayout>

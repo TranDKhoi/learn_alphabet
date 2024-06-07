@@ -49,12 +49,12 @@ public class AnimalSoundDetailsActivity extends AppCompatActivity {
 
 
         getIntent().getStringExtra("Category");
-        int intExtra = getIntent().getIntExtra("id", 0);
+        int soundType = getIntent().getIntExtra("id", 0);
         try {
 
             DatabaseHelper databaseHelper = new DatabaseHelper(this);
             databaseHelper.openDataBase();
-            this.data = databaseHelper.getAnimalSound(intExtra);
+            this.data = databaseHelper.getAnimalSound(soundType);
         } catch (Exception ignore) {
 
         }
@@ -87,7 +87,7 @@ public class AnimalSoundDetailsActivity extends AppCompatActivity {
         next.setOnClickListener(view -> {
             currentPosition = viewPager.getCurrentItem();
             int i = currentPosition + 1;
-            if (currentPosition == TOTAL_IMAGES) {
+            if (currentPosition == TOTAL_IMAGES - 1) {
                 i = 0;
             }
             PlayAction(data.get(i).getSound_raw());

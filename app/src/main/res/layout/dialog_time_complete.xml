@@ -32,7 +32,6 @@
                 android:textSize="25sp" />
 
             <ImageView
-                android:id="@+id/winning_icon"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_gravity="center"
@@ -40,7 +39,6 @@
                 app:srcCompat="@drawable/timeup" />
 
             <LinearLayout
-                android:id="@+id/score_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

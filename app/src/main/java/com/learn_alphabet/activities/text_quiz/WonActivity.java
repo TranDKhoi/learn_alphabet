@@ -15,7 +15,7 @@ public class WonActivity extends Activity {
     Button btnPlayAgain;
     TextView tv;
 
-    @Override 
+    @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_won);
@@ -31,20 +31,21 @@ public class WonActivity extends Activity {
         button.setOnClickListener(view -> WonActivity.this.finish());
         Button button2 = (Button) findViewById(R.id.btnPlayAgain);
         this.btnPlayAgain = button2;
-        button2.setOnClickListener(new View.OnClickListener() { 
-            @Override 
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 WonActivity.this.startActivity(new Intent(WonActivity.this, TextQuizActivity.class));
+                finish();
             }
         });
     }
 
-    @Override 
+    @Override
     protected void onStart() {
         super.onStart();
     }
 
-    @Override 
+    @Override
     protected void onResume() {
         super.onResume();
     }
