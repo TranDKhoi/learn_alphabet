@@ -43,8 +43,6 @@ public class DrawBoardActivity extends BaseActivity implements View.OnClickListe
             });
             exitDialog.setNegativeButton(getResources().getString(R.string.cancel), (dialog, which) -> dialog.cancel());
             exitDialog.show();
-
-
         });
 
         initView();

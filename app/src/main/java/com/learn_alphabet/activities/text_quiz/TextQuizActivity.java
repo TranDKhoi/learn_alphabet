@@ -2,13 +2,11 @@ package com.learn_alphabet.activities.text_quiz;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
 
 import com.learn_alphabet.R;
 import com.learn_alphabet.activities.text_quiz.utils.Constant;
@@ -28,7 +28,6 @@ import java.util.concurrent.TimeUnit;
 
 
 public class TextQuizActivity extends Activity implements View.OnTouchListener, View.OnDragListener {
-    public static Context contextstat;
     static int hearts;
     static int score;
     LinearLayout answers_linearLayout22;
@@ -66,9 +65,6 @@ public class TextQuizActivity extends Activity implements View.OnTouchListener, 
         setQuestionView();
         this.times.setText("00:00:60");
         new CounterClass(250000L, 1000L).start();
-        getSharedPreferences("PREFERENCE", 0).edit().putBoolean("firstrun", true).apply();
-        getSharedPreferences("PREFERENCE", 0).edit().putBoolean("firstrunhearts", true).apply();
-        contextstat = this;
     }
 
     public static int getMyValue() {
@@ -126,15 +122,16 @@ public class TextQuizActivity extends Activity implements View.OnTouchListener, 
         for (int i2 = 1; i2 <= 5; i2++) {
             ImageView imageView = new ImageView(getApplicationContext());
             if (i2 <= i) {
-                imageView.setImageDrawable(getDrawable(R.drawable.hearts));
+                imageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.hearts));
             } else {
-                imageView.setImageDrawable(getDrawable(R.drawable.hearts_empty));
+                imageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.hearts_empty));
             }
             imageView.setLayoutParams(new LinearLayout.LayoutParams(80, 80));
             linearLayout.addView(imageView);
         }
     }
 
+    @SuppressLint("DiscouragedApi")
     private void setQuestionView() {
         this.perfect_position_array = new String[this.currentA.length()];
         if (this.currentA.length() < 7) {
@@ -142,7 +139,7 @@ public class TextQuizActivity extends Activity implements View.OnTouchListener, 
         } else {
             this.width = this.displayMetrics.widthPixels / this.currentA.length();
         }
-        this.imgQuestion.setImageDrawable(getDrawable(getResources().getIdentifier(this.currentQ, "drawable", getPackageName())));
+        this.imgQuestion.setImageDrawable(ContextCompat.getDrawable(this, getResources().getIdentifier(this.currentQ, "drawable", getPackageName())));
         this.answers_linearLayout22 = (LinearLayout) findViewById(R.id.answers_linearLayout22);
         ((LinearLayout) findViewById(R.id.answers_linearLayout)).setOnDragListener(this);
         int length = this.currentA.length();
@@ -150,7 +147,7 @@ public class TextQuizActivity extends Activity implements View.OnTouchListener, 
         for (int i = 0; i < this.currentA.length(); i++) {
             ImageView imageView = new ImageView(getApplicationContext());
             imageView.setId(i);
-            imageView.setImageDrawable(getDrawable(getResources().getIdentifier(this.currentA.charAt(i) + "_letter", "drawable", getPackageName())));
+            imageView.setImageDrawable(ContextCompat.getDrawable(this, getResources().getIdentifier(this.currentA.charAt(i) + "_letter", "drawable", getPackageName())));
             int i2 = this.width;
             imageView.setLayoutParams(new LinearLayout.LayoutParams(i2, i2));
             imageView.setOnTouchListener(this);
@@ -165,7 +162,7 @@ public class TextQuizActivity extends Activity implements View.OnTouchListener, 
         this.placeholder_linearLayout = findViewById(R.id.placeholder_linearLayout);
         for (int i4 = 0; i4 < this.currentA.length(); i4++) {
             LinearLayout linearLayout = new LinearLayout(getApplicationContext());
-            linearLayout.setBackground(getDrawable(R.drawable.placeholder));
+            linearLayout.setBackground(ContextCompat.getDrawable(this, R.drawable.placeholder));
             linearLayout.setId(i4 + 9999);
             int i5 = this.width;
             linearLayout.setLayoutParams(new LinearLayout.LayoutParams(i5, i5));
@@ -186,11 +183,11 @@ public class TextQuizActivity extends Activity implements View.OnTouchListener, 
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         if (motionEvent.getAction() == 0) {
-            view.getId();
-            view.startDrag(null, new View.DragShadowBuilder(view), view, 0);
+            view.startDragAndDrop(null, new View.DragShadowBuilder(view), view, 0);
             return true;
         }
         return false;
@@ -206,13 +203,13 @@ public class TextQuizActivity extends Activity implements View.OnTouchListener, 
             view2.setVisibility(View.INVISIBLE);
         } else if (action == 3) {
             if (view.getId() >= 9999 && view.getId() <= this.currentA.length() + 9999) {
-                view.setBackground(getDrawable(R.drawable.placeholder));
+                view.setBackground(ContextCompat.getDrawable(this, R.drawable.placeholder));
             }
             int childCount = this.answers_linearLayout22.getChildCount();
             ViewGroup viewGroup = (ViewGroup) view2.getParent();
-            List asList = Arrays.asList(this.perfect_position_array);
+            List<String> asList = Arrays.asList(this.perfect_position_array);
             if (asList.contains(this.currentA.charAt(id) + "," + view.getId()) && view.getId() >= 9999 && view.getId() <= this.currentA.length() + 9999) {
-                ArrayList arrayList = new ArrayList(Arrays.asList(this.perfect_position_array));
+                ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(this.perfect_position_array));
                 arrayList.remove(this.currentA.charAt(id) + "," + view.getId());
                 this.perfect_position_array = (String[]) arrayList.toArray(new String[0]);
                 viewGroup.removeView(view2);
@@ -244,7 +241,7 @@ public class TextQuizActivity extends Activity implements View.OnTouchListener, 
             }
             if (childCount == 1) {
                 ImageView imageView = new ImageView(getApplicationContext());
-                imageView.setImageDrawable(getResources().getDrawable(R.drawable.win));
+                imageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.win));
                 int i2 = this.width;
                 imageView.setLayoutParams(new LinearLayout.LayoutParams(i2, i2));
                 imageView.setOnTouchListener(this);
@@ -255,31 +252,18 @@ public class TextQuizActivity extends Activity implements View.OnTouchListener, 
         } else if (action == 4) {
             view2.post(() -> view2.setVisibility(View.VISIBLE));
         } else if (action == 5) {
-            Log.d("perfect_position_array", "arr: " + Arrays.toString(this.perfect_position_array));
-            Log.d("perfect_position_array", "arr: " + view.getId() + "");
-            List asList2 = Arrays.asList(this.perfect_position_array);
+            List<String> asList2 = Arrays.asList(this.perfect_position_array);
             if (asList2.contains(this.currentA.charAt(id) + "," + view.getId()) && view.getId() >= 9999 && view.getId() <= this.currentA.length() + 9999) {
-                view.setBackground(getDrawable(R.drawable.placeholder_true));
+                view.setBackground(ContextCompat.getDrawable(this, R.drawable.placeholder_true));
             } else {
-                List asList3 = Arrays.asList(this.perfect_position_array);
+                List<String> asList3 = Arrays.asList(this.perfect_position_array);
                 if (!asList3.contains(this.currentA.charAt(id) + "," + view.getId()) && view.getId() >= 9999 && view.getId() <= this.currentA.length() + 9999) {
-                    view.setBackground(getDrawable(R.drawable.placeholder_wrong));
+                    view.setBackground(ContextCompat.getDrawable(this, R.drawable.placeholder_wrong));
                 }
             }
         } else if (action == 6 && view.getId() >= 9999 && view.getId() <= this.currentA.length() + 9999) {
-            view.setBackground(getDrawable(R.drawable.placeholder));
+            view.setBackground(ContextCompat.getDrawable(this, R.drawable.placeholder));
         }
         return true;
-    }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
     }
 }

@@ -175,7 +175,6 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
         int indexOfChild = this.parent.indexOfChild(root.drawingViewId);
         this.parent.removeView(root.drawingViewId);
         this.parent.addView(this.dv, indexOfChild);
-        this.totalItem = this.drawType.equals(DrawingResourcePool.DRAWING_ALPHABET) ? DrawingResourcePool.capitalStoke.length : DrawingResourcePool.numberStroke.length;
         this.mPaint = new Paint();
         this.mPaint.setAntiAlias(true);
         this.mPaint.setDither(true);
@@ -188,17 +187,14 @@ public class DrawingActivity extends AppCompatActivity implements OnClickListene
         if (this.drawType.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
             this.mediaPlayer = MediaPlayer.create(this, DrawingResourcePool.alphabetSound[this.currentPosition]);
             this.mediaPlayer.start();
+            this.totalItem = DrawingResourcePool.capitalStoke.length;
+            root.itemImageId.setImageResource(DrawingResourcePool.capitalStoke[this.currentPosition]);
         } else {
             this.mediaPlayer = MediaPlayer.create(this, DrawingResourcePool.numberSounds[this.currentPosition]);
             this.mediaPlayer.start();
+            this.totalItem = DrawingResourcePool.numberStroke.length;
+            root.itemImageId.setImageResource(DrawingResourcePool.numberStroke[this.currentPosition]);
         }
-        if (this.drawType.equals(DrawingResourcePool.DRAWING_ALPHABET)) {
-            this.totalItem = DrawingResourcePool.capitalStoke.length;
-            root.itemImageId.setImageResource(DrawingResourcePool.capitalStoke[this.currentPosition]);
-            return;
-        }
-        this.totalItem = DrawingResourcePool.numberStroke.length;
-        root.itemImageId.setImageResource(DrawingResourcePool.numberStroke[this.currentPosition]);
 
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
